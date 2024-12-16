@@ -83,19 +83,20 @@
             padding: 15px 0;
         }
         .form-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: block; /* Mudando para block para garantir que o input fique abaixo do label */
+            margin-bottom: 20px;
         }
         .form-row label {
-            flex: 1;
             font-size: 18px;
+            display: block; /* Faz com que o label ocupe uma linha inteira */
+            margin-bottom: 8px; /* Espaçamento entre o label e o input */
         }
         .form-row select, .form-row input {
-            width: 300px;
+            width: 100%; /* O input ocupará toda a largura disponível */
             padding: 12px;
             font-size: 18px;
-            margin-left: 20px;
+            margin-left: 0; /* Remove o espaço da esquerda */
+            box-sizing: border-box; /* Garante que o padding não afete a largura */
         }
         #valorTotal {
             font-size: 22px;
@@ -186,7 +187,6 @@
             var formasPagamento = document.getElementById("formas-pagamento");
             var email = document.getElementById("email");
             var telefone = document.getElementById("telefone");
-            var total = document.getElementById ("total");
 
             var isValid = formasLavagem.value !== "0" && adicionaisLavagem.value !== "0" && formasPagamento.value !== "" && email.value !== "" && telefone.value !== "";
 
