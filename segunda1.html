@@ -9,10 +9,12 @@
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
             text-align: center;
+            margin: 0;
+            padding: 0;
         }
         h1 {
             color: red;
-            font-size: 40px;
+            font-size: 36px;
             font-weight: bold;
             display: inline;
             text-decoration: underline;
@@ -20,25 +22,42 @@
         }
         h2 {
             color: grey;
-            font-size: 25px;
+            font-size: 24px;
         }
         p {
             color: red;
-            font-size: 25px;
+            font-size: 22px;
         }
         img {
-            width: 700px;
-            height: 400px;
+            width: 70%;
+            height: auto;
             margin-top: 20px;
+        }
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 20px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background-color: #f0f0f0;
+            color: #333;
         }
         button {
             background-color: red;
             color: white;
-            font-size: 25px;
-            padding: 10px 20px;
+            font-size: 24px;
+            padding: 15px 25px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            width: 100%;
             margin-top: 20px;
         }
         button:hover {
@@ -50,11 +69,10 @@
         }
         .form-container {
             background-color: #e0e0e0;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
-            list-style-type: none;
             margin: 20px auto;
-            width: 60%;
+            width: 70%;
             text-align: left;
         }
         .form-container ul {
@@ -62,7 +80,7 @@
         }
         .form-container li {
             font-size: 20px;
-            padding: 10px 0;
+            padding: 15px 0;
         }
         .form-row {
             display: flex;
@@ -74,21 +92,18 @@
             font-size: 18px;
         }
         .form-row select, .form-row input {
-            width: 250px;
-            padding: 10px;
-            font-size: 15px;
+            width: 300px;
+            padding: 12px;
+            font-size: 18px;
             margin-left: 20px;
         }
-        button {
-            font-size: 28px;
-            padding: 15px 25px;
-            width: 100%;
-            margin-top: 20px;
-        }
         #valorTotal {
-            font-size: 20px;
-            margin-top: 10px;
+            font-size: 22px;
+            margin-top: 20px;
             font-weight: bold;
+        }
+        .form-row select, .form-row input, #valorTotal {
+            font-size: 20px;
         }
     </style>
 </head>
@@ -192,42 +207,41 @@
         }
 
         function enviarFormulario() {
-    // Pega os valores dos campos
-    var formasLavagem = parseFloat(document.getElementById("formas-lavagem").value) || 0;
-    var adicionaisLavagem = parseFloat(document.getElementById("adicionais-lavagem").value) || 0;
-    var formasPagamento = document.getElementById("formas-pagamento").value;
-    var email = document.getElementById("email").value;
-    var telefone = document.getElementById("telefone").value;
+            // Pega os valores dos campos
+            var formasLavagem = parseFloat(document.getElementById("formas-lavagem").value) || 0;
+            var adicionaisLavagem = parseFloat(document.getElementById("adicionais-lavagem").value) || 0;
+            var formasPagamento = document.getElementById("formas-pagamento").value;
+            var email = document.getElementById("email").value;
+            var telefone = document.getElementById("telefone").value;
 
-    // Calcula o total e o desconto
-    var total = formasLavagem + adicionaisLavagem;
-    var desconto = total * 0.15; // 15% de desconto
-    var valorComDesconto = total - desconto;
+            // Calcula o total e o desconto
+            var total = formasLavagem + adicionaisLavagem;
+            var desconto = total * 0.15; // 15% de desconto
+            var valorComDesconto = total - desconto;
 
-    // Atualiza o templateParams com os valores corretos
-    var templateParams = {
-        formasLavagem: formasLavagem.toFixed(2), // Valor da forma de lavagem selecionada
-        adicionaisLavagem: adicionaisLavagem.toFixed(2), // Valor dos adicionais
-        formasPagamento: formasPagamento, // Forma de pagamento escolhida
-        email: email, // E-mail do cliente
-        telefone: telefone, // Telefone do cliente
-        total: total.toFixed(2), // Valor total SEM desconto
-        desconto: desconto.toFixed(2), // Valor do desconto
-        valorComDesconto: valorComDesconto.toFixed(2) // Valor com desconto
-    };
+            // Atualiza o templateParams com os valores corretos
+            var templateParams = {
+                formasLavagem: formasLavagem.toFixed(2), // Valor da forma de lavagem selecionada
+                adicionaisLavagem: adicionaisLavagem.toFixed(2), // Valor dos adicionais
+                formasPagamento: formasPagamento, // Forma de pagamento escolhida
+                email: email, // E-mail do cliente
+                telefone: telefone, // Telefone do cliente
+                total: total.toFixed(2), // Valor total SEM desconto
+                desconto: desconto.toFixed(2), // Valor do desconto
+                valorComDesconto: valorComDesconto.toFixed(2) // Valor com desconto
+            };
 
-    // Envia os dados via EmailJS
-    emailjs.send('service_m0u8meb', 'template_8hswb3s', templateParams)
-        .then(function(response) {
-            alert("Sua lavagem foi agendada com sucesso!"); // Mensagem de sucesso
-            console.log('SUCCESS', response); // Log de sucesso
-            window.location.href = "Terçeira.html"; // Redireciona para outra página
-        }, function(error) {
-            console.log('FAILED', error); // Log de erro
-            alert("Houve um erro ao agendar a lavagem. Erro: " + error.text); // Mensagem de erro amigável
-        });
-}
-
+            // Envia os dados via EmailJS
+            emailjs.send('service_m0u8meb', 'template_8hswb3s', templateParams)
+                .then(function(response) {
+                    alert("Sua lavagem foi agendada com sucesso!"); // Mensagem de sucesso
+                    console.log('SUCCESS', response); // Log de sucesso
+                    window.location.href = "Terçeira.html"; // Redireciona para outra página
+                }, function(error) {
+                    console.log('FAILED', error); // Log de erro
+                    alert("Houve um erro ao agendar a lavagem. Erro: " + error.text); // Mensagem de erro amigável
+                });
+        }
 
         function aplicarMascaraTelefone(input) {
             input.value = input.value.replace(/\D/g, "");
