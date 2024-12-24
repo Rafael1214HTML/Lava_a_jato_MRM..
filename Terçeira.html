@@ -2,96 +2,132 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>MRM</title>
+    <title>MRM - Obrigado por Agendar</title>
     <style>
+        /* Configuração geral da página */
         body {
-            background-color: #f0f0f0; /* Cor de fundo */
-            font-family: Arial, sans-serif; /* Fonte do texto */
-            text-align: center; /* Centraliza o conteúdo */
+            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background-color: #0288d1; /* Cor azul */
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        main {
+            padding: 40px;
         }
 
         h1 {
-            color: black;
-            font-size: 40px;
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
         }
 
         h2 {
-            color: grey;
-            font-size: 25px;
-        }
-
-        p {
-            color: red;
-            font-size: 25px;
+            font-size: 22px;
+            color: #555;
+            margin-bottom: 30px;
         }
 
         img {
-            width: 700px;
-            height: 400px; /* Altura inicial definida no CSS */
-            margin-top: 20px;
+            width: 600px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 70%;
+        }
+
+        .info-box h2 {
+            font-size: 20px;
+            color: #0288d1; /* Cor azul */
+        }
+
+        .info-box p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .info-box span {
+            font-weight: bold;
+            color: #0288d1; /* Cor azul */
         }
 
         button {
-            background-color: red; /* Cor de fundo */
-            color: white; /* Cor do texto */
-            font-size: 25px; /* Tamanho da fonte */
-            padding: 10px 20px; /* Espaçamento interno */
-            border: none; /* Remover borda */
-            border-radius: 5px; /* Bordas arredondadas */
-            cursor: pointer; /* Cursor em forma de mão ao passar o mouse */
+            background-color: #0288d1; /* Cor azul */
+            color: white;
+            font-size: 18px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
             margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
         button:hover {
-            background-color: darkred; /* Cor ao passar o mouse */
+            background-color: #0277bd; /* Azul escuro ao passar o mouse */
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
         }
 
-        h1 {
-            font-size: 30px;
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
         }
     </style>
 </head>
 <body>
 
-    <!-- Parte do texto do bem-vindo -->
-    <h1>Obrigado por nos agendar</h1>
-   
-    <h2>Agora é só entregar seu carro para nós e seu carro vai voltar limpo com segurança</h2>
+    <header>
+        MRM - AGRADECIMENTO
+    </header>
 
-    <p><img id="carroImg" src="carinha_de_sorriso.png" alt="Carro" style="width: 500px; height: 300px;"></p>
+    <main>
+        <h1>Obrigado por nos agendar!</h1>
+        <h2>Agora é só entregar seu carro, e nós cuidaremos de tudo com segurança e qualidade!</h2>
+        <img id="carroImg" src="carinha_de_sorriso.png" alt="Carro Limpo">
 
-    <!-- A parte que será alterada -->
-    <h1 id="textoAlterado">Qualquer dúvida, é só ligar para esse número: <span style="color: blue;">(19)</span> <span style="color: blue;">97125-9678</span></h1>
+        <div class="info-box">
+            <h2>Informações importantes:</h2>
+            <p>Em caso de dúvidas, entre em contato pelo número:</p>
+            <p><span>(19) 97125-9678</span></p>
+            <p>Não se esqueça de conferir nossas promoções semanais. Aproveite!</p>
+        </div>
 
-    <h1 id="textoAlterado2" style="font-size: 20px;">Aproveite as promoções, toda semana tem novidades!</h1>
+        <button type="button" onclick="window.location.href='index.html';">Voltar para a página inicial</button>
+    </main>
 
-    <script>
-        // Alterar o tamanho da fonte diretamente pela programação
-        document.getElementById('textoAlterado').style.fontSize = '30px';  // Altere o valor para o tamanho desejado
-    </script>
-
-    <script>
-        // Função para controlar a altura e a cor do texto
-        window.onload = function() {
-            var texto = document.getElementById('textoAlterado');
-            texto.style.color = 'blue';  // Altera a cor para azul
-            texto.style.fontSize = '20px';  // Altera o tamanho da fonte para 20px
-        };
-    </script>
-
-    <!-- Alterando o botão para redirecionar para a página index.html -->
-    <button type="button" onclick="window.location.href='index.html';">Voltar para pagina inicial</button>
+    <footer>
+        &copy; 2024 MRM - Todos os direitos reservados.
+    </footer>
 
     <script>
-        // Função que altera a altura da imagem programaticamente
-        function alterarAltura() {
-            var img = document.getElementById('carroImg');
-            img.height = 600;  // Altera diretamente a altura da imagem para 600px
+        // Função para ajustar a altura da imagem dinamicamente
+        function ajustarImagem() {
+            const img = document.getElementById('carroImg');
+            img.style.height = 'auto'; // Ajusta automaticamente com base na largura
         }
 
-        // Chama a função alterarAltura assim que o site for carregado
-        window.onload = alterarAltura;
+        window.onload = ajustarImagem;
     </script>
-
 </body>
 </html>

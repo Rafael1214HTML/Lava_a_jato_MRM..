@@ -3,257 +3,260 @@
 <head>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <meta charset="UTF-8">
-    <title>MRM</title>
+    <title>MRM - Agendamento</title>
     <style>
+        /* Estilos gerais */
         body {
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f7f7f7, #e0e0e0);
+            font-family: 'Arial', sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
-        }
-        h1 {
-            color: red;
-            font-size: 36px;
-            font-weight: bold;
-            display: inline;
-            text-decoration: underline;
-            text-decoration-color: red;
-        }
-        h2 {
-            color: grey;
-            font-size: 24px;
-        }
-        p {
-            color: red;
-            font-size: 22px;
-        }
-        img {
-            width: 70%;
-            height: auto;
-            margin-top: 20px;
-        }
-        table {
-            width: 70%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            text-align: left;
-        }
-        th, td {
-            padding: 20px;
-            font-size: 18px;
-            border: 1px solid #ccc;
-            text-align: center;
-        }
-        th {
-            background-color: #f0f0f0;
             color: #333;
         }
-        button {
-            background-color: red;
+
+        header {
+            background-color: #0288d1; /* Cor azul */
             color: white;
-            font-size: 24px;
-            padding: 15px 25px;
+            padding: 20px 0;
+            font-size: 28px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Contêiner do formulário */
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-row {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-row label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-row select, .form-row input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .form-row select:focus, .form-row input:focus {
+            border-color: #0288d1; /* Cor azul */
+            outline: none;
+        }
+
+        #valorTotal {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #0288d1; /* Cor azul */
+        }
+
+        button {
+            background-color: #0288d1; /* Cor azul */
+            color: white;
+            font-size: 18px;
+            padding: 15px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             width: 100%;
-            margin-top: 20px;
+            transition: all 0.3s ease;
         }
+
         button:hover {
-            background-color: darkred;
+            background-color: #0277bd; /* Azul escuro ao passar o mouse */
         }
+
         button:disabled {
-            background-color: #cccccc;
+            background-color: #ccc;
             cursor: not-allowed;
         }
-        .form-container {
-            background-color: #e0e0e0;
-            padding: 30px;
-            border-radius: 10px;
-            margin: 20px auto;
-            width: 70%;
-            text-align: left;
+
+        #emailErro {
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
         }
-        .form-container ul {
-            padding: 0;
-        }
-        .form-container li {
-            font-size: 20px;
-            padding: 15px 0;
-        }
-        .form-row {
-            display: block; /* Mudando para block para garantir que o input fique abaixo do label */
-            margin-bottom: 20px;
-        }
-        .form-row label {
-            font-size: 18px;
-            display: block; /* Faz com que o label ocupe uma linha inteira */
-            margin-bottom: 8px; /* Espaçamento entre o label e o input */
-        }
-        .form-row select, .form-row input {
-            width: 100%; /* O input ocupará toda a largura disponível */
-            padding: 12px;
-            font-size: 18px;
-            margin-left: 0; /* Remove o espaço da esquerda */
-            box-sizing: border-box; /* Garante que o padding não afete a largura */
-        }
-        #valorTotal {
-            font-size: 22px;
-            margin-top: 20px;
-            font-weight: bold;
-        }
-        .form-row select, .form-row input, #valorTotal {
-            font-size: 20px;
+
+        @media (max-width: 768px) {
+            .form-container {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            button {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+        MRM - Agendamento de Lavagem
+    </header>
+
+    <h1>Agende Sua Lavagem</h1>
+    <h2>Escolha os detalhes e deixe o resto conosco!</h2>
 
     <div class="form-container">
         <form id="formulario">
-            <ul>
-                <li class="form-row">
-                    <label for="formas-lavagem">Formas de lavagem:</label>
-                    <select id="formas-lavagem" name="formas-lavagem" onchange="calcularTotal(); validarFormulario()">
-                        <option value="0">Selecione</option>
-                        <option value="25.00">Lavagem de dentro do carro: R$ 25,00</option>
-                        <option value="25.00">Lavagem de fora do carro: R$ 25,00</option>
-                        <option value="10.00">Lavagem do porta mala: R$ 10,00</option>
-                        <option value="60.00">Lavagem de tudo: R$ 60,00</option>
-                    </select>
-                </li>
+            <!-- Adicionando seleção de dia e hora -->
+            <div class="form-row">
+                <label for="dia">Escolha o dia:</label>
+                <input type="date" id="dia" name="dia" required onchange="validarFormulario()">
+            </div>
+            <div class="form-row">
+                <label for="hora">Escolha o horário:</label>
+                <input type="time" id="hora" name="hora" required onchange="validarFormulario()">
+            </div>
 
-                <li class="form-row">
-                    <label for="adicionais-lavagem">Adicionais na lavagem:</label>
-                    <select id="adicionais-lavagem" name="adicionais-lavagem" onchange="calcularTotal(); validarFormulario()">
-                        <option value="0">Selecione</option>
-                        <option value="9.00">Produto no banco: R$ 9,00</option>
-                        <option value="7.50">Produto no pneu: R$ 7,50</option>
-                        <option value="5.99">Produto no vidro: R$ 5,99</option>
-                        <option value="5.99">Produto no plástico: R$ 5,99</option>
-                        <option value="8.00">Cera no carro: R$ 8,00</option>
-                        <option value="34.00">Todos os produtos: R$ 34,00</option>
-                    </select>
-                </li>
+            <!-- Restante do formulário -->
+            <div class="form-row">
+                <label for="formas-lavagem">Formas de lavagem:</label>
+                <select id="formas-lavagem" name="formas-lavagem" onchange="calcularTotal(); validarFormulario()">
+                    <option value="0">Selecione</option>
+                    <option value="25.00">Lavagem de dentro do carro: R$ 25,00</option>
+                    <option value="25.00">Lavagem de fora do carro: R$ 25,00</option>
+                    <option value="10.00">Lavagem do porta-malas: R$ 10,00</option>
+                    <option value="60.00">Lavagem de tudo: R$ 60,00</option>
+                </select>
+            </div>
 
-                <li class="form-row">
-                    <label for="formas-pagamento">Forma de pagamento:</label>
-                    <select id="formas-pagamento" name="formas-pagamento" onchange="validarFormulario()">
-                        <option value="">Selecione</option>
-                        <option value="Pix">Pix</option>
-                        <option value="Dinheiro">Dinheiro</option>
-                    </select>
-                </li>
+            <div class="form-row">
+                <label for="adicionais-lavagem">Adicionais na lavagem:</label>
+                <select id="adicionais-lavagem" name="adicionais-lavagem" onchange="calcularTotal(); validarFormulario()">
+                    <option value="0">Selecione</option>
+                    <option value="9.00">Produto no banco: R$ 9,00</option>
+                    <option value="7.50">Produto no pneu: R$ 7,50</option>
+                    <option value="5.99">Produto no vidro: R$ 5,99</option>
+                    <option value="5.99">Produto no plástico: R$ 5,99</option>
+                    <option value="8.00">Cera no carro: R$ 8,00</option>
+                    <option value="34.00">Todos os produtos: R$ 34,00</option>
+                </select>
+            </div>
 
-                <li class="form-row">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required oninput="validarFormulario(); validarEmail()">
-                    <span id="emailErro" style="color: red; font-size: 14px; display: none;">O e-mail deve conter @gmail.com</span>
-                </li>
+            <div class="form-row">
+                <label for="formas-pagamento">Forma de pagamento:</label>
+                <select id="formas-pagamento" name="formas-pagamento" onchange="validarFormulario()">
+                    <option value="">Selecione</option>
+                    <option value="Pix">Pix</option>
+                    <option value="Dinheiro">Dinheiro</option>
+                </select>
+            </div>
 
-                <li class="form-row">
-                    <label for="telefone">Número de telefone:</label>
-                    <input type="text" id="telefone" name="telefone" required maxlength="15" oninput="validarFormulario(); aplicarMascaraTelefone(this)">
-                </li>
+            <div class="form-row">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required oninput="validarFormulario(); validarEmail()">
+                <span id="emailErro">O e-mail deve conter @gmail.com</span>
+            </div>
 
-                <li>
-                    <div id="valorTotal">Valor Total: R$ 0,00</div>
-                </li>
+            <div class="form-row">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" required maxlength="15" oninput="validarFormulario(); aplicarMascaraTelefone(this)">
+            </div>
 
-                <li>
-                    <button type="button" id="agendarBtn" onclick="enviarFormulario()" disabled>Agendar lavagem</button>
-                </li>
-            </ul>
+            <div id="valorTotal">Valor Total: R$ 0,00</div>
+
+            <button type="button" id="agendarBtn" onclick="enviarFormulario()" disabled>Agendar lavagem</button>
         </form>
     </div>
 
     <script>
+        emailjs.init("OwY2ejow991Tf-EE5");
+
         function calcularTotal() {
             var formasLavagem = parseFloat(document.getElementById("formas-lavagem").value) || 0;
             var adicionaisLavagem = parseFloat(document.getElementById("adicionais-lavagem").value) || 0;
             var total = formasLavagem + adicionaisLavagem;
             var desconto = total * 0.15;
             var valorComDesconto = total - desconto;
-            
+
             document.getElementById("valorTotal").textContent = "Valor Total com Desconto: R$ " + valorComDesconto.toFixed(2);
         }
 
-        emailjs.init("OwY2ejow991Tf-EE5");  // Substitua pelo seu USER ID do EmailJS
-
         function validarFormulario() {
-            var formasLavagem = document.getElementById("formas-lavagem");
-            var adicionaisLavagem = document.getElementById("adicionais-lavagem");
-            var formasPagamento = document.getElementById("formas-pagamento");
-            var email = document.getElementById("email");
-            var telefone = document.getElementById("telefone");
+            const dia = document.getElementById("dia").value;
+            const hora = document.getElementById("hora").value;
+            const lavagem = document.getElementById("formas-lavagem").value !== "0";
+            const adicionais = document.getElementById("adicionais-lavagem").value !== "0";
+            const pagamento = document.getElementById("formas-pagamento").value !== "";
+            const email = document.getElementById("email").value !== "";
+            const telefone = document.getElementById("telefone").value !== "";
 
-            var isValid = formasLavagem.value !== "0" && adicionaisLavagem.value !== "0" && formasPagamento.value !== "" && email.value !== "" && telefone.value !== "";
-
-            document.getElementById("agendarBtn").disabled = !isValid;
+            document.getElementById("agendarBtn").disabled = !(dia && hora && lavagem && adicionais && pagamento && email && telefone);
         }
 
         function validarEmail() {
-            var emailInput = document.getElementById("email");
-            var emailErro = document.getElementById("emailErro");
+            const emailInput = document.getElementById("email").value;
+            const emailErro = document.getElementById("emailErro");
+            const isValid = emailInput.includes("@gmail.com");
 
-            if (!emailInput.value.includes("@gmail.com")) {
-                emailErro.style.display = "block";
-                document.getElementById("agendarBtn").disabled = true;
-            } else {
-                emailErro.style.display = "none";
-                validarFormulario();
-            }
+            emailErro.style.display = isValid ? "none" : "block";
+            validarFormulario();
         }
 
         function enviarFormulario() {
-            // Pega os valores dos campos
-            var formasLavagem = parseFloat(document.getElementById("formas-lavagem").value) || 0;
-            var adicionaisLavagem = parseFloat(document.getElementById("adicionais-lavagem").value) || 0;
-            var formasPagamento = document.getElementById("formas-pagamento").value;
-            var email = document.getElementById("email").value;
-            var telefone = document.getElementById("telefone").value;
+            const form = document.getElementById("formulario");
+            const formData = new FormData(form);
 
-            // Calcula o total e o desconto
-            var total = formasLavagem + adicionaisLavagem;
-            var desconto = total * 0.15; // 15% de desconto
-            var valorComDesconto = total - desconto;
-
-            // Atualiza o templateParams com os valores corretos
-            var templateParams = {
-                formasLavagem: formasLavagem.toFixed(2), // Valor da forma de lavagem selecionada
-                adicionaisLavagem: adicionaisLavagem.toFixed(2), // Valor dos adicionais
-                formasPagamento: formasPagamento, // Forma de pagamento escolhida
-                email: email, // E-mail do cliente
-                telefone: telefone, // Telefone do cliente
-                total: total.toFixed(2), // Valor total SEM desconto
-                desconto: desconto.toFixed(2), // Valor do desconto
-                valorComDesconto: valorComDesconto.toFixed(2) // Valor com desconto
-            };
-
-            // Envia os dados via EmailJS
-            emailjs.send('service_m0u8meb', 'template_8hswb3s', templateParams)
-                .then(function(response) {
-                    alert("Sua lavagem foi agendada com sucesso!"); // Mensagem de sucesso
-                    console.log('SUCCESS', response); // Log de sucesso
-                    window.location.href = "Terçeira.html"; // Redireciona para outra página
-                }, function(error) {
-                    console.log('FAILED', error); // Log de erro
-                    alert("Houve um erro ao agendar a lavagem. Erro: " + error.text); // Mensagem de erro amigável
-                });
+            emailjs.send("service_xxxxx", "template_xxxxx", {
+                dia: formData.get("dia"),
+                hora: formData.get("hora"),
+                lavagem: formData.get("formas-lavagem"),
+                adicionais: formData.get("adicionais-lavagem"),
+                pagamento: formData.get("formas-pagamento"),
+                email: formData.get("email"),
+                telefone: formData.get("telefone")
+            }).then(() => {
+                alert("Agendamento enviado com sucesso!");
+                form.reset();
+                calcularTotal();
+                validarFormulario();
+            }).catch((error) => {
+                alert("Erro ao enviar o agendamento: " + error);
+            });
         }
 
         function aplicarMascaraTelefone(input) {
             input.value = input.value.replace(/\D/g, "");
-            if (input.value.length <= 2) {
-                input.value = input.value.replace(/^(\d{0,2})/, "($1");
-            } else if (input.value.length <= 6) {
-                input.value = input.value.replace(/^(\d{2})(\d{0,4})/, "($1) $2");
-            } else {
-                input.value = input.value.replace(/^(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
-            }
+            input.value = input.value.replace(/(\d{2})(\d{4,5})(\d{4})/, "($1) $2-$3");
         }
     </script>
-
 </body>
 </html>
