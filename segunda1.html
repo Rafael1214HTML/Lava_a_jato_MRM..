@@ -136,17 +136,6 @@
 
     <div class="form-container">
         <form id="formulario">
-            <!-- Adicionando seleção de dia e hora -->
-            <div class="form-row">
-                <label for="dia">Escolha o dia:</label>
-                <input type="date" id="dia" name="dia" required onchange="validarFormulario()">
-            </div>
-            <div class="form-row">
-                <label for="hora">Escolha o horário:</label>
-                <input type="time" id="hora" name="hora" required onchange="validarFormulario()">
-            </div>
-
-            <!-- Restante do formulário -->
             <div class="form-row">
                 <label for="formas-lavagem">Formas de lavagem:</label>
                 <select id="formas-lavagem" name="formas-lavagem" onchange="calcularTotal(); validarFormulario()">
@@ -168,6 +157,24 @@
                     <option value="5.99">Produto no plástico: R$ 5,99</option>
                     <option value="8.00">Cera no carro: R$ 8,00</option>
                     <option value="34.00">Todos os produtos: R$ 34,00</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label for="adicionais-lavagem">Adicionais na lavagem:</label>
+                <select id="adicionais-lavagem" name="adicionais-lavagem" onchange="calcularTotal(); validarFormulario()">
+                    <option value="0">Selecione</option>
+                    <option value="9.00">Produto no banco: R$ 9,00</option>
+                    <option value="7.50">Produto no pneu: R$ 7,50</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label for="adicionais-lavagem">Dia da lavagem:</label>
+                <select id="adicionais-lavagem" name="adicionais-lavagem" onchange="calcularTotal(); validarFormulario()">
+                    <option value="0">Selecione</option>
+                    <option value="Sabado"></option>
+                    <option value="Sexta feira"></option>
                 </select>
             </div>
 
@@ -198,8 +205,6 @@
     </div>
 
     <script>
-        emailjs.init("OwY2ejow991Tf-EE5");
-
         function calcularTotal() {
             var formasLavagem = parseFloat(document.getElementById("formas-lavagem").value) || 0;
             var adicionaisLavagem = parseFloat(document.getElementById("adicionais-lavagem").value) || 0;
@@ -210,47 +215,30 @@
             document.getElementById("valorTotal").textContent = "Valor Total com Desconto: R$ " + valorComDesconto.toFixed(2);
         }
 
-        function validarFormulario() {
-            const dia = document.getElementById("dia").value;
-            const hora = document.getElementById("hora").value;
-            const lavagem = document.getElementById("formas-lavagem").value !== "0";
-            const adicionais = document.getElementById("adicionais-lavagem").value !== "0";
-            const pagamento = document.getElementById("formas-pagamento").value !== "";
-            const email = document.getElementById("email").value !== "";
-            const telefone = document.getElementById("telefone").value !== "";
+        emailjs.init("OwY2ejow991Tf-EE5");
 
-            document.getElementById("agendarBtn").disabled = !(dia && hora && lavagem && adicionais && pagamento && email && telefone);
+        function validarFormulario() {
+            var formasLavagem = document.getElementById("formas-lavagem").value !== "0";
+            var adicionaisLavagem = document.getElementById("adicionais-lavagem").value !== "0";
+            var formasPagamento = document.getElementById("formas-pagamento").value !== "";
+            var email = document.getElementById("email").value !== "";
+            var telefone = document.getElementById("telefone").value !== "";
+
+            document.getElementById("agendarBtn").disabled = !(formasLavagem && adicionaisLavagem && formasPagamento && email && telefone);
         }
 
         function validarEmail() {
-            const emailInput = document.getElementById("email").value;
-            const emailErro = document.getElementById("emailErro");
-            const isValid = emailInput.includes("@gmail.com");
+            var emailInput = document.getElementById("email").value;
+            var emailErro = document.getElementById("emailErro");
+            var isValid = emailInput.includes("@gmail.com");
 
             emailErro.style.display = isValid ? "none" : "block";
             validarFormulario();
         }
 
         function enviarFormulario() {
-            const form = document.getElementById("formulario");
-            const formData = new FormData(form);
-
-            emailjs.send("service_xxxxx", "template_xxxxx", {
-                dia: formData.get("dia"),
-                hora: formData.get("hora"),
-                lavagem: formData.get("formas-lavagem"),
-                adicionais: formData.get("adicionais-lavagem"),
-                pagamento: formData.get("formas-pagamento"),
-                email: formData.get("email"),
-                telefone: formData.get("telefone")
-            }).then(() => {
-                alert("Agendamento enviado com sucesso!");
-                form.reset();
-                calcularTotal();
-                validarFormulario();
-            }).catch((error) => {
-                alert("Erro ao enviar o agendamento: " + error);
-            });
+            alert("Formulário enviado com sucesso!");
+            window.location.href = "Terçeira.html";
         }
 
         function aplicarMascaraTelefone(input) {
