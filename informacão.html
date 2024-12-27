@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MRM - Informações</title>
+    <link rel="stylesheet" href="style.css">
+
     <style>
         body {
             background: linear-gradient(to bottom right, #e0f7fa, #b3e5fc); /* Fundo com degradê moderno */
@@ -12,6 +14,22 @@
             margin: 0;
             padding: 0;
             line-height: 1.8;
+        }
+
+        button {
+            background-color: #0288d1; /* Cor azul */
+            color: white;
+            font-size: 20px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0277bd; /* Cor azul escuro ao passar o mouse */
         }
 
         header {
@@ -61,6 +79,13 @@
             margin-top: 30px;
             box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         }
+
+        /* Centralizando o botão */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
@@ -75,13 +100,8 @@
     <li><strong>Sobre Nós:</strong> O Lava a Jato MRM é um negócio familiar, focado em oferecer serviços automotivos de alta qualidade com responsabilidade e compromisso.</li>
     <li><strong>Equipe Capacitada:</strong> Nossa equipe é apaixonados por veículos e dedicados à sua satisfação.</li>
     <li><strong>Sustentabilidade:</strong> Usamos os melhores produtos.</li>
-    
-    </li>
-   
     <li><strong>Horário de Funcionamento:</strong> Segunda a Sábado, das 14h às 18h.</li>
-    <li><strong>Equipe por Dia de Trabalho:</strong>
-    
-    </li>
+    <li><strong>Equipe por Dia de Trabalho:</strong></li>
     <li><strong>Contato:</strong> 
         <ul>
             <li>Telefone: (19) 97125-9678</li>
@@ -90,7 +110,10 @@
     </li>
 </ul>
 
-<button type="button" onclick="window.location.href='segunda1.html';">Começar a agendar sua lavagem</button>
+<!-- Botão centralizado -->
+<div class="button-container">
+    <button type="button" onclick="window.location.href='segunda1.html';">Começar a agendar sua lavagem</button>
+</div>
 
 <footer>
     &copy; 2024 Lava a Jato MRM - Criado com dedicação por Rafael e sua equipe.

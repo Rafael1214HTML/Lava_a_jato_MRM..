@@ -140,10 +140,10 @@
                 <label for="formas-lavagem">Formas de lavagem:</label>
                 <select id="formas-lavagem" name="formas-lavagem" onchange="calcularTotal(); validarFormulario()">
                     <option value="0">Selecione</option>
-                    <option value="25.00">Lavagem de dentro do carro: R$ 25,00</option>
-                    <option value="25.00">Lavagem de fora do carro: R$ 25,00</option>
-                    <option value="10.00">Lavagem do porta-malas: R$ 10,00</option>
-                    <option value="60.00">Lavagem de tudo: R$ 60,00</option>
+                    <option value="Lavagem de dentro do carro: R$ 25,00">Lavagem de dentro do carro: R$ 25,00</option>
+                    <option value="Lavagem de fora do carro: R$ 25,00">Lavagem de fora do carro: R$ 25,00</option>
+                    <option value="Lavagem do porta-malas: R$ 10,00">Lavagem do porta-malas: R$ 10,00</option>
+                    <option value="Lavagem de tudo: R$ 60,00">Lavagem de tudo: R$ 60,00</option>
                 </select>
             </div>
 
@@ -151,30 +151,13 @@
                 <label for="adicionais-lavagem">Adicionais na lavagem:</label>
                 <select id="adicionais-lavagem" name="adicionais-lavagem" onchange="calcularTotal(); validarFormulario()">
                     <option value="0">Selecione</option>
-                    <option value="9.00">Produto no banco: R$ 9,00</option>
-                    <option value="7.50">Produto no pneu: R$ 7,50</option>
-                    <option value="5.99">Produto no vidro: R$ 5,99</option>
-                    <option value="5.99">Produto no plástico: R$ 5,99</option>
-                    <option value="8.00">Cera no carro: R$ 8,00</option>
-                    <option value="34.00">Todos os produtos: R$ 34,00</option>
-                </select>
-            </div>
-
-            <div class="form-row">
-                <label for="adicionais-lavagem">Adicionais na lavagem:</label>
-                <select id="adicionais-lavagem" name="adicionais-lavagem" onchange="calcularTotal(); validarFormulario()">
-                    <option value="0">Selecione</option>
-                    <option value="9.00">Produto no banco: R$ 9,00</option>
-                    <option value="7.50">Produto no pneu: R$ 7,50</option>
-                </select>
-            </div>
-
-            <div class="form-row">
-                <label for="adicionais-lavagem">Dia da lavagem:</label>
-                <select id="adicionais-lavagem" name="adicionais-lavagem" onchange="calcularTotal(); validarFormulario()">
-                    <option value="0">Selecione</option>
-                    <option value="Sabado"></option>
-                    <option value="Sexta feira"></option>
+                    <option value="0">Nenhum</option>
+                    <option value="Produto no banco R$ 9,00">Produto no banco: R$ 9,00</option>
+                    <option value="Produto no pneu R$ 7,50">Produto no pneu: R$ 7,50</option>
+                    <option value="Produto no vidro R$ 5.99">Produto no vidro: R$ 5,99</option>
+                    <option value="Produto no plástico R$ 5,99">Produto no plástico: R$ 5,99</option>
+                    <option value="Cera no carro: R$ 8,00 R$">Cera no carro: R$ 8,00</option>
+                    <option value="Todos os produtos R$ 34,00">Todos os produtos: R$ 34,00</option>
                 </select>
             </div>
 
@@ -230,15 +213,41 @@
         function validarEmail() {
             var emailInput = document.getElementById("email").value;
             var emailErro = document.getElementById("emailErro");
-            var isValid = emailInput.includes("@gmail.com");
+            var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var isValid = regex.test(emailInput);
 
             emailErro.style.display = isValid ? "none" : "block";
             validarFormulario();
         }
 
         function enviarFormulario() {
-            alert("Formulário enviado com sucesso!");
-            window.location.href = "Terçeira.html";
+
+            var formasLavagem = parseFloat(document.getElementById("formas-lavagem").value) || 0;
+            var adicionaisLavagem = parseFloat(document.getElementById("adicionais-lavagem").value) || 0;
+            var total = formasLavagem + adicionaisLavagem;
+            var desconto = total * 0.15;
+            var valorComDesconto = total - desconto;
+
+            var formData = {
+                "formas-lavagem": document.getElementById("formas-lavagem").value,
+                "adicionais-lavagem": document.getElementById("adicionais-lavagem").value,
+                "formas-pagamento": document.getElementById("formas-pagamento").value,
+                "email": document.getElementById("email").value,
+                "telefone": document.getElementById("telefone").value,
+                "valorTotal": document.getElementById("valorTotal").textContent,
+                "desconto": desconto 
+            };
+
+            //codigo do cliente
+            emailjs.send('service_bsc7bjb', 'template_c6y0rid', formData)
+            //codigo do dono
+            emailjs.send('service_m0u8meb', 'template_8hswb3s', formData)
+                .then(function(response) {
+                    alert("Formulário enviado com sucesso!");
+                    window.location.href = "Terçeira.html";
+                }, function(error) {
+                    alert("Erro ao enviar formulário: " + error.text);
+                });
         }
 
         function aplicarMascaraTelefone(input) {
