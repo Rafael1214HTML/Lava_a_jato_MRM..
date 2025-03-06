@@ -4,7 +4,6 @@ body {
     text-align: center; /* Centraliza o conteúdo */
     margin: 0;
     padding: 0;
-    color: #333;
 }
 
 header {
@@ -63,8 +62,8 @@ p {
 button {
     background-color: #0288d1; /* Cor azul */
     color: white;
-    font-size: 20px;
-    padding: 15px 30px;
+    font-size: 16px; /* Tamanho da fonte reduzido */
+    padding: 10px 20px; /* Menor espaçamento interno */
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -93,16 +92,12 @@ footer {
     }
 
     button {
-        font-size: 18px;
+        font-size: 16px;
         padding: 12px 24px;
     }
 
     #carroImg {
         width: 90%;
-    }
-
-    .legenda {
-        font-size: 18px; /* Ajusta o tamanho da legenda em telas menores */
     }
 
     #textoAlterado {
@@ -122,8 +117,8 @@ body {
 button {
     background-color: #0288d1; /* Cor azul */
     color: white;
-    font-size: 20px;
-    padding: 15px 30px;
+    font-size: 16px; /* Tamanho da fonte reduzido */
+    padding: 10px 20px; /* Menor espaçamento interno */
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -200,7 +195,7 @@ body {
 }
 
 header {
-    background-color: #0288d1; /* Azul */
+    background-color: #0288d1; /* Cor azul */
     color: white;
     padding: 20px 0;
     font-size: 28px;
@@ -252,36 +247,45 @@ h2 {
 }
 
 .form-row select:focus, .form-row input:focus {
-    border-color: #0288d1; /* Azul */
+    border-color: #0288d1; /* Cor azul */
     outline: none;
 }
 
-#valorTotal {
+#valorComDesconto {
     font-size: 20px;
     font-weight: bold;
     margin-top: 20px;
-    color: #0288d1; /* Azul */
+    color: #0288d1; /* Cor azul */
 }
 
 button {
-    background-color: #0288d1; /* Azul */
+    background-color: #0288d1; /* Cor azul */
     color: white;
-    font-size: 18px;
-    padding: 15px;
+    font-size: 16px; /* Tamanho da fonte reduzido */
+    padding: 10px 20px; /* Menor espaçamento interno */
     border: none;
     border-radius: 8px;
     cursor: pointer;
     width: 100%;
     transition: all 0.3s ease;
+    margin-top: 10px;
 }
 
 button:hover {
-    background-color: #0277bd; /* Azul mais escuro */
+    background-color: #0277bd; /* Azul escuro ao passar o mouse */
 }
 
 button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+
+#cancelarBtn {
+    background-color: #f44336; /* Cor vermelha para cancelar */
+}
+
+#cancelarBtn:hover {
+    background-color: #e53935; /* Vermelho escuro ao passar o mouse */
 }
 
 #emailErro {
@@ -310,12 +314,11 @@ button:disabled {
 }
 
 body {
-    background-color: #f9f9f9;
-    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9; /* Fundo suave e clean */
+    font-family: 'Arial', sans-serif; /* Fonte moderna */
+    text-align: center; /* Centraliza o conteúdo */
     margin: 0;
     padding: 0;
-    color: #333;
-    text-align: center;
 }
 
 header {
@@ -365,99 +368,62 @@ img {
 }
 
 .info-box p {
-    font-size: 18px;
-    color: #555;
+    font-size: 16px;
+    color: #333;
 }
-
-.info-box span {
-    font-weight: bold;
-    color: #0288d1; /* Cor azul */
-}
-
-button {
-    background-color: #0288d1; /* Cor azul */
-    color: white;
-    font-size: 18px;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-button:hover {
-    background-color: #0277bd; /* Azul escuro ao passar o mouse */
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-}
-
-footer {
-    margin-top: 30px;
-    font-size: 14px;
-    color: #777;
-}
-
 body {
-            background: linear-gradient(to bottom right, #e0f7fa, #b3e5fc); /* Fundo com degradê moderno */
             font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
             color: #333;
-            margin: 0;
-            padding: 0;
-            line-height: 1.8;
+            text-align: center;
+            padding: 20px;
         }
 
         header {
-            background-color: #0288d1; /* Azul vibrante */
+            background-color: #0288d1;
             color: white;
-            padding: 20px 10px;
-            text-align: center;
+            padding: 20px 0;
             font-size: 28px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            color: #0288d1; /* Azul para o título */
-            text-align: center;
-            font-size: 36px;
-            margin-top: 30px;
+            font-size: 32px;
+            color: #0288d1;
         }
 
-        ul {
-            max-width: 800px;
+        .confirmacao-container {
+            background-color: #fff;
+            padding: 30px;
             margin: 20px auto;
-            padding: 0 15px;
-            text-align: left;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .confirmacao-row {
+            margin-bottom: 20px;
             font-size: 18px;
-            color: #555;
-            list-style: none;
+            text-align: left;
         }
 
-        ul li {
-            background-color: #ffffff; /* Fundo branco */
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar os itens */
+        .confirmacao-row span {
+            font-weight: bold;
         }
 
-        ul li strong {
-            color: #0288d1; /* Destaque em azul */
-        }
-
-        footer {
+        .botao {
             background-color: #0288d1;
             color: white;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 14px;
-            margin-top: 30px;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 16px; /* Tamanho da fonte reduzido */
+            padding: 10px 20px; /* Menor espaçamento interno */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 20px;
         }
 
-        /* Centralizando o botão */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
+        .botao:hover {
+            background-color: #0277bd;
         }

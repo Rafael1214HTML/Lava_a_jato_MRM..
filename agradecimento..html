@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>MRM - Obrigado por Agendar</title>
+    <style>
+        /* Configuração geral da página */
+        body {
+            background-color: #f2f2f2;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background-color: #0288d1; /* Cor azul */
+            color: white;
+            padding: 30px;
+            font-size: 28px;
+            border-bottom: 5px solid #0277bd;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 38px;
+            color: #0288d1;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        img {
+            width: 600px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .info-box {
+            background-color: #fff;
+            padding: 25px;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .info-box h2 {
+            font-size: 24px;
+            color: #0288d1; /* Cor azul */
+            margin-bottom: 15px;
+        }
+
+        .info-box p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .info-box span {
+            font-weight: bold;
+            color: #0288d1;
+        }
+
+        .smile-message {
+            font-size: 26px;
+            color: #0288d1;
+            font-weight: bold;
+            margin-top: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            margin-top: 40px;
+        }
+
+        button {
+            background-color: #0288d1;
+            color: white;
+            font-size: 20px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0277bd;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .animated-heart {
+            font-size: 36px;
+            color: #ff4081;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .testimonial {
+            margin-top: 30px;
+            background-color: #0288d1;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        .testimonial p {
+            font-style: italic;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        MRM - AGRADECIMENTO
+    </header>
+
+    <main>
+        <h1>Obrigado por agendar conosco!</h1>
+        <h2>Agora é só entregar seu carro, e nós cuidaremos de tudo com segurança e qualidade!</h2>
+        <img id="carroImg" src="carinha_de_sorriso.png" alt="Carro Limpo">
+
+        <div class="info-box">
+            <h2>Informações importantes:</h2>
+            <p>Em caso de dúvidas, entre em contato pelo número:</p>
+            <p><span>(19) 97125-9678</span></p>
+            <p>Não se esqueça de conferir nossas promoções semanais! Aproveite!</p>
+        </div>
+
+        <div class="smile-message">
+            <p>Estamos muito felizes em ter você como cliente!</p>
+            <p>Seu agendamento foi recebido com sucesso!</p>
+            <span class="animated-heart">❤️</span>
+        </div>
+
+        <div class="button-container">
+            <button type="button" onclick="window.location.href='index.html';">Voltar para a página inicial</button>
+        </div>
+
+        <div class="testimonial">
+            <p>"Excelente serviço! Fiquei muito satisfeito com a qualidade da lavagem e o atendimento. Recomendo!"</p>
+            <p>- João Silva</p>
+        </div>
+
+        <footer>
+            &copy; 2024 MRM - Todos os direitos reservados.
+        </footer>
+    </main>
+
+    <script>
+        // Função para ajustar a altura da imagem dinamicamente
+        function ajustarImagem() {
+            const img = document.getElementById('carroImg');
+            img.style.height = 'auto'; // Ajusta automaticamente com base na largura
+        }
+
+        window.onload = ajustarImagem;
+    </script>
+</body>
+</html>

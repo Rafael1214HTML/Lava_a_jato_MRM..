@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>DESAPEGO DA DRI - Compra</title>
+    <style>
+        body {
+            background-color: #f9f9f9; /* Fundo suave e clean */
+            font-family: 'Arial', sans-serif; /* Fonte moderna */
+            text-align: center; /* Centraliza o conteúdo */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0288d1; /* Cor azul */
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        h1 {
+            color: #333; /* Cor mais sóbria para o título */
+            font-size: 36px;
+            margin-top: 30px;
+            margin-bottom: 30px; /* Espaçamento entre títulos e outros elementos */
+        }
+
+        h2 {
+            color: #555; /* Cor mais suave para o subtítulo */
+            font-size: 24px;
+            margin-bottom: 50px; /* Aumenta o espaço abaixo do subtítulo */
+            margin-top: 0; /* Remove qualquer margem superior */
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Cria duas colunas */
+            gap: 20px; /* Espaçamento entre as imagens */
+            justify-items: center; /* Alinha os itens ao centro */
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            text-align: center;
+        }
+
+        .gallery-item img {
+            width: 400px; /* Largura fixa para todas as imagens */
+            height: 300px; /* Altura fixa para todas as imagens */
+            object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+            border-radius: 10px; /* Bordas arredondadas */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05); /* Efeito de zoom suave ao passar o mouse */
+        }
+
+        .buy-button {
+            display: inline-block;
+            background-color: #0288d1;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .buy-button:hover {
+            background-color: #026aa1;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr; /* Em telas menores, exibe as imagens em uma coluna */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        DESAPEGO DA DRI - Compra
+    </header>
+    <h1>Faça sua compra</h1>
+    <h2>De brinquedos usados baratos e de boa qualidade</h2>
+
+    <h1 id="jogosTabuleiros">Jogos de Tabuleiro :</h1>
+    <div class="image-gallery">
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/400x300" alt="Imagem 1">
+            <a href="finalizar_pedido.html" class="buy-button">Comprar</a>
+        </div>
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/400x300" alt="Imagem 2">
+            <a href="finalizar_pedido.html" class="buy-button">Comprar</a>
+        </div>
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/400x300" alt="Imagem 3">
+            <a href="finalizar_pedido.html" class="buy-button">Comprar</a>
+        </div>
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/400x300" alt="Imagem 4">
+            <a href="finalizar_pedido.html" class="buy-button">Comprar</a>
+        </div>
+    </div>
+
+    <h1 id="brinquedos">Brinquedos :</h1>
+    <div class="image-gallery">
+        <div class="gallery-item">
+            <img src="Livro.jpeg" alt="Beyblade">
+            <a href="finalizar_pedido.html" class="buy-button">Comprar</a>
+        </div>
+        <div class="gallery-item">
+            <img src="Livro_do_lucas_neto.jpeg" alt="Massinha">
+            <a href="finalizar_pedido.html" class="buy-button">Comprar</a>
+        </div>
+        <div class="gallery-item">
+            <img src="Massinha_de_moldar.jpeg" alt="Imagem 3">
+            <a href="finalizar_pedido.html" class="buy-button">Comprar</a>
+        </div>
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/400x300" alt="Imagem 4">
+            <a href="finalizar_pedido.html" class="buy-button">Comprar</a>
+        </div>
+    </div>
+
+<h1 id="Livros">Livros :</h1>
+    <div class="image-gallery">
+        <div class="gallery-item">
+            <img src="Livro.jpeg" alt="Beyblade">
+            <a href="finalizar_pedido.html" class="buy-button">Comprar</a>
+        </div>
+        <div class="gallery-item">
+            <img src="Livro_do_lucas_neto.jpeg" alt="Massinha">
+            <a href="finalizar_pedido.html" class="buy-button">Comprar</a>
+        </div>
+        <div class="gallery-item">
+            <img src="Massinha_de_moldar.jpeg" alt="Imagem 3">
+            <a href="finalizar_pedido.html" class="buy-button">Comprar</a>
+        </div>
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/400x300" alt="Imagem 4">
+            <a href="finalizar_pedido.html" class="buy-button">Comprar</a>
+        </div>
+    </div>
+
+
+</body>
+</html>
