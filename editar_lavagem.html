@@ -72,6 +72,13 @@
         .botao:hover {
             background-color: #2980b9;
         }
+
+        .preco-desconto {
+            font-size: 20px;
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -128,17 +135,16 @@
             <input type="text" id="telefone" name="telefone" required maxlength="15">
         </div>
 
-        <!-- NOVO: Valor total com desconto -->
+        <!-- CAMPO DE VALOR COM DESCONTO -->
         <div class="form-row">
-            <label for="valor-total">Valor total com 15% de desconto:</label>
-            <input type="text" id="valor-total" readonly>
+            <label><strong>Valor com 15% de desconto:</strong></label>
+            <div id="preco-com-desconto" class="preco-desconto">R$ 0,00</div>
         </div>
 
         <button class="botao" onclick="salvarEdicoes()">Salvar Edições</button>
     </div>
 
     <script>
-        // Função para preencher selects com segurança
         function setSelectValue(id, value) {
             const select = document.getElementById(id);
             const options = Array.from(select.options).map(opt => opt.value);
@@ -147,7 +153,6 @@
             }
         }
 
-        // Recuperar os dados do localStorage
         var formData = JSON.parse(localStorage.getItem("formData"));
 
         if (formData) {
@@ -157,7 +162,7 @@
             document.getElementById("email").value = formData["email"] || "";
             document.getElementById("telefone").value = formData["telefone"] || "";
         } else {
-            formData = {}; // Inicializa objeto vazio para não dar erro
+            formData = {};
             alert("Nenhum dado encontrado para edição.");
         }
 
@@ -170,19 +175,18 @@
 
             localStorage.setItem("formData", JSON.stringify(formData));
 
-            window.location.href = "confirmacão_do_pedido.html"; // Página de confirmação
+            window.location.href = "confirmacão_do_pedido.html";
         }
 
-        // Funções de cálculo de preço com desconto
         function extrairPreco(texto) {
-            const match = texto.match(/R\$ ?([\d,.]+)/);
+            const match = texto.match(/R\$ ?([\d.,]+)/);
             if (match && match[1]) {
                 return parseFloat(match[1].replace(",", "."));
             }
             return 0;
         }
 
-        function calcularTotalComDesconto() {
+        function calcularDesconto() {
             const lavagem = document.getElementById("formas-lavagem").value;
             const adicional = document.getElementById("adicionais-lavagem").value;
 
@@ -190,18 +194,15 @@
             const precoAdicional = extrairPreco(adicional);
 
             const total = precoLavagem + precoAdicional;
-            const desconto = total * 0.15;
-            const totalComDesconto = total - desconto;
+            const comDesconto = total * 0.85; // Aplica 15% de desconto
 
-            document.getElementById("valor-total").value = `R$ ${totalComDesconto.toFixed(2).replace(".", ",")}`;
+            document.getElementById("preco-com-desconto").innerText = `R$ ${comDesconto.toFixed(2).replace('.', ',')}`;
         }
 
-        // Eventos para atualizar o valor ao trocar os campos
-        document.getElementById("formas-lavagem").addEventListener("change", calcularTotalComDesconto);
-        document.getElementById("adicionais-lavagem").addEventListener("change", calcularTotalComDesconto);
+        document.getElementById("formas-lavagem").addEventListener("change", calcularDesconto);
+        document.getElementById("adicionais-lavagem").addEventListener("change", calcularDesconto);
 
-        // Calcula ao carregar
-        calcularTotalComDesconto();
+        calcularDesconto(); // Executa ao abrir a página
     </script>
 
 </body>
