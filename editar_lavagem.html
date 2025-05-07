@@ -128,6 +128,12 @@
             <input type="text" id="telefone" name="telefone" required maxlength="15">
         </div>
 
+        <!-- NOVO: Valor total com desconto -->
+        <div class="form-row">
+            <label for="valor-total">Valor total com 15% de desconto:</label>
+            <input type="text" id="valor-total" readonly>
+        </div>
+
         <button class="botao" onclick="salvarEdicoes()">Salvar Edições</button>
     </div>
 
@@ -166,6 +172,36 @@
 
             window.location.href = "confirmacão_do_pedido.html"; // Página de confirmação
         }
+
+        // Funções de cálculo de preço com desconto
+        function extrairPreco(texto) {
+            const match = texto.match(/R\$ ?([\d,.]+)/);
+            if (match && match[1]) {
+                return parseFloat(match[1].replace(",", "."));
+            }
+            return 0;
+        }
+
+        function calcularTotalComDesconto() {
+            const lavagem = document.getElementById("formas-lavagem").value;
+            const adicional = document.getElementById("adicionais-lavagem").value;
+
+            const precoLavagem = extrairPreco(lavagem);
+            const precoAdicional = extrairPreco(adicional);
+
+            const total = precoLavagem + precoAdicional;
+            const desconto = total * 0.15;
+            const totalComDesconto = total - desconto;
+
+            document.getElementById("valor-total").value = `R$ ${totalComDesconto.toFixed(2).replace(".", ",")}`;
+        }
+
+        // Eventos para atualizar o valor ao trocar os campos
+        document.getElementById("formas-lavagem").addEventListener("change", calcularTotalComDesconto);
+        document.getElementById("adicionais-lavagem").addEventListener("change", calcularTotalComDesconto);
+
+        // Calcula ao carregar
+        calcularTotalComDesconto();
     </script>
 
 </body>
