@@ -2,10 +2,52 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MRM - Informações</title>
     <link rel="stylesheet" href="style.css">
-
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            color: #34495e;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 24px;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        ul {
+            max-width: 700px;
+            margin: 20px auto;
+            font-size: 18px;
+        }
+        .button-container {
+            text-align: center;
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            ul {
+                font-size: 16px;
+                padding: 0 10px;
+            }
+            button {
+                width: 90%;
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -20,7 +62,6 @@
     <li><strong>Equipe Capacitada:</strong> Nossa equipe é apaixonados por veículos e dedicados à sua satisfação.</li>
     <li><strong>Sustentabilidade:</strong> Usamos os melhores produtos.</li>
     <li><strong>Horário de Funcionamento:</strong> Segunda a Sábado, das 14h às 18h.</li>
-    <li><strong>Equipe por Dia de Trabalho:</strong></li>
     <li><strong>Contato:</strong> 
         <ul>
             <li>Telefone: (19) 97125-9678</li>
@@ -29,16 +70,10 @@
     </li>
 </ul>
 
-<!-- Botão centralizado -->
 <div class="button-container">
     <button type="button" onclick="window.location.href='index.html';">Voltar</button>
     <button type="button" onclick="window.location.href='agendamento.html';">Começar a agendar sua lavagem</button>
 </div>
-
-
-<footer>
-    &copy; 2024 Lava a Jato MRM - Criado com dedicação por Rafael e sua equipe.
-</footer>
 
 </body>
 </html>

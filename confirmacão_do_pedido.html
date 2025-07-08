@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>MRM - Revisão do Agendamento</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MRM - Confirmação do Agendamento</title>
     <style>
         /* Estilos gerais */
         body {
@@ -10,6 +11,7 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            color: #34495e;
         }
 
         header {
@@ -22,7 +24,6 @@
 
         h1 {
             text-align: center;
-            color: #34495e;
             margin-top: 20px;
         }
 
@@ -54,84 +55,84 @@
             border-radius: 5px;
             cursor: pointer;
             margin-top: 20px;
+            margin-right: 10px;
         }
 
         .botao:hover {
             background-color: #2980b9;
         }
 
-        /* Mensagens de erro */
-        #emailErro {
-            color: red;
-            font-size: 14px;
-            display: none;
+        @media (max-width: 600px) {
+            .botao {
+                width: 100%;
+                margin: 10px 0 0 0;
+            }
+            .revisao-container {
+                width: 95%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        MRM - Revisão de Agendamento
-    </header>
+<header>
+    MRM - Revisão de Agendamento
+</header>
 
-    <h1>Revise seu Agendamento</h1>
+<h1>Revise seu Agendamento</h1>
 
-    <div class="revisao-container">
-        <h2>Detalhes do Pedido</h2>
-        
-        <div class="revisao-row">
-            <strong>Forma de Lavagem:</strong> <span id="revFormaLavagem"></span>
-        </div>
-        
-        <div class="revisao-row">
-            <strong>Adicionais:</strong> <span id="revAdicionaisLavagem"></span>
-        </div>
-
-        <div class="revisao-row">
-            <strong>Forma de Pagamento:</strong> <span id="revFormaPagamento"></span>
-        </div>
-
-        <div class="revisao-row">
-            <strong>Email:</strong> <span id="revEmail"></span>
-        </div>
-
-        <div class="revisao-row">
-            <strong>Telefone:</strong> <span id="revTelefone"></span>
-        </div>
-
-        <button class="botao" onclick="editarAgendamento()">Editar</button>
-        <button class="botao" onclick="confirmarAgendamento()">Confirmar Agendamento</button>
+<div class="revisao-container">
+    <h2>Detalhes do Pedido</h2>
+    
+    <div class="revisao-row">
+        <strong>Forma de Lavagem:</strong> <span id="revFormaLavagem"></span>
+    </div>
+    
+    <div class="revisao-row">
+        <strong>Adicionais:</strong> <span id="revAdicionaisLavagem"></span>
     </div>
 
-    <script>
-        // Recuperar os dados do localStorage
-        var formData = JSON.parse(localStorage.getItem("formData"));
+    <div class="revisao-row">
+        <strong>Forma de Pagamento:</strong> <span id="revFormaPagamento"></span>
+    </div>
 
-        if (formData) {
-            // Preencher os campos de revisão com os dados do localStorage
-            document.getElementById("revFormaLavagem").textContent = formData["formas-lavagem"];
-            document.getElementById("revAdicionaisLavagem").textContent = formData["adicionais-lavagem"];
-            document.getElementById("revFormaPagamento").textContent = formData["formas-pagamento"];
-            document.getElementById("revEmail").textContent = formData["email"];
-            document.getElementById("revTelefone").textContent = formData["telefone"];
-        } else {
-            alert("Nenhum dado encontrado para o agendamento.");
-        }
+    <div class="revisao-row">
+        <strong>Email:</strong> <span id="revEmail"></span>
+    </div>
 
-        function editarAgendamento() {
-            // Voltar para a página de edição do agendamento
-            window.location.href = "editar_lavagem.html"; // Substitua pelo nome do seu formulário
-        }
+    <div class="revisao-row">
+        <strong>Telefone:</strong> <span id="revTelefone"></span>
+    </div>
 
-        function confirmarAgendamento() {
-            // Confirmar o agendamento e salvar as informações
-            alert("Agendamento Confirmado!");
+    <button class="botao" onclick="editarAgendamento()">Editar</button>
+    <button class="botao" onclick="confirmarAgendamento()">Confirmar Agendamento</button>
+</div>
 
-            // Limpar os dados e redirecionar para a próxima página
-            localStorage.removeItem("formData");
-            window.location.href = "agradecimento.html"; // Redireciona para a página inicial ou confirmação final
-        }
-    </script>
+<script>
+    // Recuperar os dados do localStorage
+    var formData = JSON.parse(localStorage.getItem("formData"));
+
+    if (formData) {
+        // Preencher os campos de revisão com os dados do localStorage
+        document.getElementById("revFormaLavagem").textContent = formData["formas-lavagem"];
+        document.getElementById("revAdicionaisLavagem").textContent = formData["adicionais-lavagem"];
+        document.getElementById("revFormaPagamento").textContent = formData["formas-pagamento"];
+        document.getElementById("revEmail").textContent = formData["email"];
+        document.getElementById("revTelefone").textContent = formData["telefone"];
+    } else {
+        alert("Nenhum dado encontrado para o agendamento.");
+    }
+
+    function editarAgendamento() {
+        window.location.href = "editar_lavagem.html";
+    }
+
+    function confirmarAgendamento() {
+        alert("Agendamento Confirmado!");
+        localStorage.removeItem("formData");
+        window.location.href = "agradecimento.html";
+    }
+</script>
 
 </body>
 </html>

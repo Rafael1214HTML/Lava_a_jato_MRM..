@@ -2,9 +2,11 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- Responsividade para celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>MRM - Obrigado por Agendar</title>
     <style>
-        /* Configuração geral da página */
         body {
             background-color: #f9f9f9;
             font-family: 'Arial', sans-serif;
@@ -15,14 +17,16 @@
         }
 
         header {
-            background-color: #0288d1; /* Cor azul */
+            background-color: #0288d1;
             color: white;
             padding: 20px;
             font-size: 24px;
         }
 
         main {
-            padding: 40px;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         h1 {
@@ -38,7 +42,7 @@
         }
 
         img {
-            width: 600px;
+            max-width: 100%;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -57,7 +61,7 @@
 
         .info-box h2 {
             font-size: 20px;
-            color: #0288d1; /* Cor azul */
+            color: #0288d1;
         }
 
         .info-box p {
@@ -67,11 +71,11 @@
 
         .info-box span {
             font-weight: bold;
-            color: #0288d1; /* Cor azul */
+            color: #0288d1;
         }
 
         button {
-            background-color: #0288d1; /* Cor azul */
+            background-color: #0288d1;
             color: white;
             font-size: 18px;
             padding: 12px 24px;
@@ -81,10 +85,12 @@
             margin-top: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            max-width: 300px;
+            width: 100%;
         }
 
         button:hover {
-            background-color: #0277bd; /* Azul escuro ao passar o mouse */
+            background-color: #0277bd;
             box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
         }
 
@@ -92,6 +98,41 @@
             margin-top: 30px;
             font-size: 14px;
             color: #777;
+        }
+
+        /* Responsividade */
+        @media (max-width: 700px) {
+            main {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            .info-box {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .info-box p {
+                font-size: 16px;
+            }
+
+            button {
+                padding: 14px;
+                font-size: 18px;
+                max-width: none;
+            }
+
+            header {
+                font-size: 20px;
+                padding: 16px;
+            }
         }
     </style>
 </head>
@@ -116,23 +157,11 @@
         <button type="button" onclick="window.location.href='index.html';">Voltar para a página inicial</button>
     </main>
 
-    <footer>
-        &copy; 2025 MRM - Todos os direitos reservados.
-    </footer>
-
     <script>
-       
-
-
-    function confirmarPedido() {
-        alert("Pedido confirmado com sucesso! Você receberá um e-mail com os detalhes.");
-        window.location.href = "index.html";
-    }
-    
-        // Função para ajustar a altura da imagem dinamicamente
+        // Ajusta altura da imagem (boa prática)
         function ajustarImagem() {
             const img = document.getElementById('carroImg');
-            img.style.height = 'auto'; // Ajusta automaticamente com base na largura
+            img.style.height = 'auto';
         }
 
         window.onload = ajustarImagem;

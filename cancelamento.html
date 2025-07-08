@@ -1,32 +1,144 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MRM - Cancelamento</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            color: #34495e;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            margin: 10px 0;
+        }
+        #carroImg {
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+        }
+        button:first-of-type {
+            background-color: #e74c3c;
+            color: white;
+        }
+        button:last-of-type {
+            background-color: #3498db;
+            color: white;
+        }
+        @media (max-width: 600px) {
+            button {
+                width: 90%;
+                font-size: 18px;
+                display: block;
+                margin: 10px auto;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
 <header>
-  Voce esta cancelando sua lavagem
+  Você está cancelando sua lavagem
 </header>
 
-    <!-- Parte do texto de boas-vindas -->
-    <h1 id="textoTitulo">Voce cancelou sua lavagem </h1>
-    <h2>Se quiser agendar sua lavagem denovo clique em Voltar e se não quiser aperte em Cancelar </h2>
+<h1 id="textoTitulo">Você cancelou sua lavagem</h1>
+<h2>Se quiser agendar sua lavagem de novo, clique em Voltar. Se não quiser, aperte em Cancelar.</h2>
 
-    <p><img id="carroImg" src="Imagem.webp" alt="Carro"></p>
+<p><img id="carroImg" src="Imagem.webp" alt="Carro"></p>
 
-    <!-- Botão para redirecionamento para outra página -->
-    <button type="button" onclick="window.location.href='index.html';">Cancelar</button>
+<button type="button" onclick="window.location.href='index.html';">Cancelar</button>
+<button type="button" onclick="window.location.href='agendamento.html';">Voltar</button>
 
-    <footer>
-        &copy; 2024 MRM - Todos os direitos reservados.
-    </footer>
-   
-    <script>
-    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MRM - Cancelamento</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            color: #34495e;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            margin: 10px 0;
+        }
+        #carroImg {
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+        }
+        button:first-of-type {
+            background-color: #e74c3c;
+            color: white;
+        }
+        button:last-of-type {
+            background-color: #3498db;
+            color: white;
+        }
+        @media (max-width: 600px) {
+            button {
+                width: 90%;
+                font-size: 18px;
+                display: block;
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+  Você está cancelando sua lavagem
+</header>
+
+<h1 id="textoTitulo">Você cancelou sua lavagem</h1>
+<h2>Se quiser agendar sua lavagem de novo, clique em Voltar. Se não quiser, aperte em Cancelar.</h2>
+
+<p><img id="carroImg" src="Imagem.webp" alt="Carro"></p>
+
+<button type="button" onclick="window.location.href='index.html';">Cancelar</button>
+<button type="button" onclick="window.location.href='agendamento.html';">Voltar</button>
 
 </body>
 </html>
