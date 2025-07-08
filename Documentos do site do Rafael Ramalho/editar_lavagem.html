@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- Torna a página adaptável para celulares -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MRM - Edição de Agendamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 24px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #34495e;
+            margin-top: 20px;
+        }
+
+        .form-container {
+            background-color: white;
+            margin: 20px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .form-row {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .form-row label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .form-row input,
+        .form-row select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-row input[type="text"],
+        .form-row input[type="email"] {
+            background-color: #f9f9f9;
+        }
+
+        .botao {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .botao:hover {
+            background-color: #2980b9;
+        }
+
+        .preco-desconto {
+            font-size: 20px;
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            header {
+                font-size: 20px;
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .form-row {
+                font-size: 16px;
+            }
+
+            .botao {
+                width: 100%;
+                font-size: 18px;
+            }
+
+            .preco-desconto {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        MRM - Edição de Agendamento
+    </header>
+
+    <h1>Edite seu Agendamento</h1>
+
+    <div class="form-container">
+        <h2>Formulário de Edição</h2>
+        
+        <div class="form-row">
+            <label for="formas-lavagem">Formas de lavagem:</label>
+            <select id="formas-lavagem" name="formas-lavagem">
+                <option value="0">Selecione</option>
+                <option value="Lavagem de dentro do carro: R$ 20,00">Lavagem de dentro do carro: R$ 20,00</option>
+                <option value="Lavagem de fora do carro: R$ 20,00">Lavagem de fora do carro: R$ 20,00</option>
+                <option value="Lavagem do porta-malas: R$ 10,00">Lavagem do porta-malas: R$ 10,00</option>
+                <option value="Lavagem de tudo: R$ 40,00">Lavagem de tudo: R$ 40,00</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="adicionais-lavagem">Adicionais na lavagem:</label>
+            <select id="adicionais-lavagem" name="adicionais-lavagem">
+                <option value="0">Selecione</option>
+                <option value="Nenhum produto R$ 0,00">Nenhum produto R$ 0,00</option>
+                <option value="Produto no banco: R$ 9,00">Produto no banco: R$ 9,00</option>
+                <option value="Produto no pneu: R$ 7,50">Produto no pneu: R$ 7,50</option>
+                <option value="Produto no vidro: R$ 5,99">Produto no vidro: R$ 5,99</option>
+                <option value="Produto no plástico: R$ 5,99">Produto no plástico: R$ 5,99</option>
+                <option value="Cera no carro: R$ 8,00">Cera no carro: R$ 8,00</option>
+                <option value="Todos os produtos: R$ 25,00">Todos os produtos: R$ 25,00</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="formas-pagamento">Forma de pagamento:</label>
+            <select id="formas-pagamento" name="formas-pagamento">
+                <option value="Pix">Pix</option>
+                <option value="Dinheiro">Dinheiro</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-row">
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" required maxlength="15">
+        </div>
+
+        <div class="form-row">
+            <label><strong>Valor com 15% de desconto:</strong></label>
+            <div id="preco-com-desconto" class="preco-desconto">R$ 0,00</div>
+        </div>
+
+        <button class="botao" onclick="salvarEdicoes()">Salvar Edições</button>
+    </div>
+
+    <script>
+        function setSelectValue(id, value) {
+            const select = document.getElementById(id);
+            const options = Array.from(select.options).map(opt => opt.value);
+            if (options.includes(value)) {
+                select.value = value;
+            }
+        }
+
+        var formData = JSON.parse(localStorage.getItem("formData"));
+
+        if (formData) {
+            setSelectValue("formas-lavagem", formData["formas-lavagem"]);
+            setSelectValue("adicionais-lavagem", formData["adicionais-lavagem"]);
+            setSelectValue("formas-pagamento", formData["formas-pagamento"]);
+            document.getElementById("email").value = formData["email"] || "";
+            document.getElementById("telefone").value = formData["telefone"] || "";
+        } else {
+            formData = {};
+            alert("Nenhum dado encontrado para edição.");
+        }
+
+        function salvarEdicoes() {
+            formData["formas-lavagem"] = document.getElementById("formas-lavagem").value;
+            formData["adicionais-lavagem"] = document.getElementById("adicionais-lavagem").value;
+            formData["formas-pagamento"] = document.getElementById("formas-pagamento").value;
+            formData["email"] = document.getElementById("email").value;
+            formData["telefone"] = document.getElementById("telefone").value;
+
+            localStorage.setItem("formData", JSON.stringify(formData));
+            window.location.href = "confirmacão_do_pedido.html";
+        }
+
+        function extrairPreco(texto) {
+            const match = texto.match(/R\$ ?([\d.,]+)/);
+            if (match && match[1]) {
+                return parseFloat(match[1].replace(",", "."));
+            }
+            return 0;
+        }
+
+        function calcularDesconto() {
+            const lavagem = document.getElementById("formas-lavagem").value;
+            const adicional = document.getElementById("adicionais-lavagem").value;
+
+            const precoLavagem = extrairPreco(lavagem);
+            const precoAdicional = extrairPreco(adicional);
+
+            const total = precoLavagem + precoAdicional;
+            const comDesconto = total * 0.85;
+
+            document.getElementById("preco-com-desconto").innerText = `R$ ${comDesconto.toFixed(2).replace('.', ',')}`;
+        }
+
+        document.getElementById("formas-lavagem").addEventListener("change", calcularDesconto);
+        document.getElementById("adicionais-lavagem").addEventListener("change", calcularDesconto);
+
+        calcularDesconto(); // Executa ao abrir a página
+    </script>
+
+</body>
+</html>

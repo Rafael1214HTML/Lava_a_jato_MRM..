@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <meta charset="UTF-8">
+
+    <!-- Tag para responsividade -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MRM - Agendamento</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS interno para responsividade, sem interferir no que já existe -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            padding: 20px;
+            margin: 0;
+        }
+
+        header {
+            background-color: #004aad;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        #valorComDesconto {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        button {
+            margin: 10px 5px;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #emailErro {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+
+        /* Responsivo para celulares */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            header {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            button {
+                width: 100%;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        MRM - Agendamento de Lavagem
+    </header>
+
+    <h1>Agende Sua Lavagem</h1>
+    <h2>Escolha os detalhes e deixe o resto conosco!</h2>
+
+    <div class="form-container">
+        <form id="formulario">
+            <div class="form-row">
+                <label for="formas-lavagem">Formas de lavagem:</label>
+                <select id="formas-lavagem" name="formas-lavagem" onchange="calcularTotal(); validarFormulario()">
+                    <option value="0">Selecione</option>
+                    <option value="Lavagem de dentro do carro: R$ 20,00">Lavagem de dentro do carro: R$ 20,00</option>
+                    <option value="Lavagem de fora do carro: R$ 20,00">Lavagem de fora do carro: R$ 20,00</option>
+                    <option value="Lavagem do porta-malas: R$ 10,00">Lavagem do porta-malas: R$ 10,00</option>
+                    <option value="Lavagem de tudo: R$ 40,00">Lavagem de tudo: R$ 40,00</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label for="adicionais-lavagem">Adicionais na lavagem:</label>
+                <select id="adicionais-lavagem" name="adicionais-lavagem" onchange="calcularTotal(); validarFormulario()">
+                    <option value="0">Selecione</option>
+                    <option value="Nenhum produto R$ 0,00">Nenhum produto R$ 0,00</option>
+                    <option value="Produto no banco: R$ 9,00">Produto no banco: R$ 9,00</option>
+                    <option value="Produto no pneu: R$ 7,50">Produto no pneu: R$ 7,50</option>
+                    <option value="Produto no vidro: R$ 5,99">Produto no vidro: R$ 5,99</option>
+                    <option value="Produto no plástico: R$ 5,99">Produto no plástico: R$ 5,99</option>
+                    <option value="Cera no carro: R$ 8,00">Cera no carro: R$ 8,00</option>
+                    <option value="Todos os produtos: R$ 25,00">Todos os produtos: R$ 25,00</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label for="formas-pagamento">Forma de pagamento:</label>
+                <select id="formas-pagamento" name="formas-pagamento" onchange="validarFormulario()">
+                    <option value="">Selecione</option>
+                    <option value="Pix">Pix</option>
+                    <option value="Dinheiro">Dinheiro</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required oninput="validarFormulario(); validarEmail()">
+                <span id="emailErro">O e-mail deve conter @gmail.com</span>
+            </div>
+
+            <div class="form-row">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" required maxlength="15" oninput="validarFormulario(); aplicarMascaraTelefone(this)">
+            </div>
+
+            <div id="valorComDesconto">Valor Total com Desconto: R$ 0,00</div>
+
+            <button type="button" id="agendarBtn" onclick="enviarFormulario()" disabled>Agendar lavagem</button>
+            <button type="button" id="cancelarBtn" onclick="cancelarFormulario()">Cancelar</button>
+        </form>
+    </div>
+
+    <script>
+        emailjs.init("OwY2ejow991Tf-EE5");
+
+        function obterValorNumerico(valor) {
+            var valorNumerico = parseFloat(valor.replace(/[^0-9,.-]+/g, "").replace(",", "."));
+            return isNaN(valorNumerico) ? 0 : valorNumerico;
+        }
+
+        function calcularTotal() {
+            var formasLavagem = obterValorNumerico(document.getElementById("formas-lavagem").value);
+            var adicionaisLavagem = obterValorNumerico(document.getElementById("adicionais-lavagem").value);
+            var total = formasLavagem + adicionaisLavagem;
+            var desconto = total * 0.15;
+            var valorComDesconto = total - desconto;
+            document.getElementById("valorComDesconto").textContent = "Valor Total com Desconto: R$ " + valorComDesconto.toFixed(2);
+        }
+
+        function validarFormulario() {
+            var formasLavagem = document.getElementById("formas-lavagem").value !== "0";
+            var adicionaisLavagem = document.getElementById("adicionais-lavagem").value !== "0";
+            var formasPagamento = document.getElementById("formas-pagamento").value !== "";
+            var email = document.getElementById("email").value !== "";
+            var telefone = document.getElementById("telefone").value !== "";
+            document.getElementById("agendarBtn").disabled = !(formasLavagem && adicionaisLavagem && formasPagamento && email && telefone);
+        }
+
+        function validarEmail() {
+            var emailInput = document.getElementById("email").value;
+            var emailErro = document.getElementById("emailErro");
+            var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var isValid = regex.test(emailInput);
+            emailErro.style.display = isValid ? "none" : "block";
+            validarFormulario();
+        }
+
+        function enviarFormulario() {
+            var formasLavagem = obterValorNumerico(document.getElementById("formas-lavagem").value);
+            var adicionaisLavagem = obterValorNumerico(document.getElementById("adicionais-lavagem").value);
+            var total = formasLavagem + adicionaisLavagem;
+            var desconto = total * 0.15;
+            var valorComDesconto = total - desconto;
+
+            var formData = {
+                "formas-lavagem": document.getElementById("formas-lavagem").value,
+                "adicionais-lavagem": document.getElementById("adicionais-lavagem").value,
+                "formas-pagamento": document.getElementById("formas-pagamento").value,
+                "email": document.getElementById("email").value,
+                "telefone": document.getElementById("telefone").value,
+                "valorComDesconto": valorComDesconto.toFixed(2),
+                "desconto": desconto.toFixed(2)
+            };
+
+            localStorage.setItem("formData", JSON.stringify(formData));
+
+            emailjs.send('service_bsc7bjb', 'template_c6y0rid', formData)
+                .then(function(response) {
+                    alert("Sua lavagem foi agendada com sucesso!");
+                    window.location.href = "confirmacão_do_pedido.html";
+                }, function(error) {
+                    alert("Erro ao agendar a lavagem " + error.text);
+                });
+        }
+
+        function cancelarFormulario() {
+            document.getElementById("formulario").reset();
+            document.getElementById("valorComDesconto").textContent = "Valor Total com Desconto: R$ 0,00";
+            document.getElementById("agendarBtn").disabled = true;
+            window.location.href = "cancelamento.html";
+        }
+
+        function aplicarMascaraTelefone(input) {
+            input.value = input.value.replace(/\D/g, "");
+            input.value = input.value.replace(/(\d{2})(\d{4,5})(\d{4})/, "($1) $2-$3");
+        }
+    </script>
+</body>
+</html>

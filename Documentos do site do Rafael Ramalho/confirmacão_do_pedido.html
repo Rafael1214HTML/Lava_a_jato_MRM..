@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Responsividade para celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MRM - Confirmação do Agendamento</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 24px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #34495e;
+            margin-top: 20px;
+        }
+
+        .revisao-container {
+            background-color: white;
+            margin: 20px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .revisao-row {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .revisao-row strong {
+            color: #2c3e50;
+        }
+
+        .botao {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px 0 5px;
+        }
+
+        .botao:hover {
+            background-color: #2980b9;
+        }
+
+        #emailErro {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+
+        /* Responsivo para celular */
+        @media (max-width: 600px) {
+            header {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .revisao-row {
+                font-size: 16px;
+            }
+
+            .botao {
+                width: 100%;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        MRM - Revisão de Agendamento
+    </header>
+
+    <h1>Revise seu Agendamento</h1>
+
+    <div class="revisao-container">
+        <h2>Detalhes do Pedido</h2>
+        
+        <div class="revisao-row">
+            <strong>Forma de Lavagem:</strong> <span id="revFormaLavagem"></span>
+        </div>
+        
+        <div class="revisao-row">
+            <strong>Adicionais:</strong> <span id="revAdicionaisLavagem"></span>
+        </div>
+
+        <div class="revisao-row">
+            <strong>Forma de Pagamento:</strong> <span id="revFormaPagamento"></span>
+        </div>
+
+        <div class="revisao-row">
+            <strong>Email:</strong> <span id="revEmail"></span>
+        </div>
+
+        <div class="revisao-row">
+            <strong>Telefone:</strong> <span id="revTelefone"></span>
+        </div>
+
+        <button class="botao" onclick="editarAgendamento()">Editar</button>
+        <button class="botao" onclick="confirmarAgendamento()">Confirmar Agendamento</button>
+    </div>
+
+    <script>
+        // Recuperar os dados do localStorage
+        var formData = JSON.parse(localStorage.getItem("formData"));
+
+        if (formData) {
+            document.getElementById("revFormaLavagem").textContent = formData["formas-lavagem"];
+            document.getElementById("revAdicionaisLavagem").textContent = formData["adicionais-lavagem"];
+            document.getElementById("revFormaPagamento").textContent = formData["formas-pagamento"];
+            document.getElementById("revEmail").textContent = formData["email"];
+            document.getElementById("revTelefone").textContent = formData["telefone"];
+        } else {
+            alert("Nenhum dado encontrado para o agendamento.");
+        }
+
+        function editarAgendamento() {
+            // Altere aqui se sua página de edição tiver outro nome
+            window.location.href = "agendamento.html";
+        }
+
+        function confirmarAgendamento() {
+            alert("Agendamento Confirmado!");
+
+            // Limpar os dados e redirecionar
+            localStorage.removeItem("formData");
+            window.location.href = "agradecimento.html";
+        }
+    </script>
+
+</body>
+</html>

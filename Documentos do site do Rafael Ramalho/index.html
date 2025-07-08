@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>MRM - Início</title>
+
+    <!-- TAG ESSENCIAL para responsividade -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Se tiver style.css, ele ainda funciona -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS interno como apoio ou se style.css não existir -->
+    <style>
+        /* Estilos base */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header {
+            background-color: #004aad;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        button {
+            margin: 10px;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsivo para celulares */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            header {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            button {
+                width: 90%;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+  Bem-vindo à MRM
+</header>
+
+    <!-- Parte do texto de boas-vindas -->
+    <h1 id="textoTitulo">Seja bem-vindo ao Lava a Jato MRM</h1>
+    <h2>Deixe seu carro brilhando com a nossa lavagem de qualidade, a preços acessíveis!</h2>
+
+    <p><img id="carroImg" src="Logo_do_lava_a_jato.webp" alt="Carro"></p>
+
+    <!-- Botões -->
+    <button type="button" onclick="window.location.href='agendamento.html';">Começar a agendar sua lavagem</button>
+    <button type="button" onclick="window.location.href='informacão.html';">Mais informações!</button>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Finalizar Pedido</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0288d1;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        .product-details {
+            margin-top: 50px;
+            display: inline-block;
+            text-align: left;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        .product-details img {
+            max-width: 300px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .product-details h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .product-details p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0288d1;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #026aa1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Finalizar Pedido
+    </header>
+
+    <div class="product-details" id="productDetails">
+        <!-- Os detalhes do produto serão exibidos aqui -->
+    </div>
+
+    <a href="compra.html" class="back-button">Voltar para Loja</a>
+    <a href="desapegos_da_drix.html" class="back-button">Voltar para o incio</a>
+
+    <script>
+        // Obtém os parâmetros da URL
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Recupera os dados do produto
+        const productName = urlParams.get('name');
+        const productPrice = urlParams.get('price');
+        const productImage = urlParams.get('image');
+
+        // Preenche os detalhes do produto na página
+        const productDetailsDiv = document.getElementById('productDetails');
+        productDetailsDiv.innerHTML = `
+            <img src="${productImage}" alt="${productName}">
+            <h2>${productName}</h2>
+            <p><strong>Preço:</strong> R$ ${productPrice}</p>
+        `;
+    </script>
+</body>
+</html>

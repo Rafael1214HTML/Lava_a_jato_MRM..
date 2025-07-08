@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Responsividade para celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MRM - Cancelamento</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Estilos internos para garantir visual em todas as telas -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            padding: 20px;
+            margin: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #dc3545;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+        }
+
+        h1 {
+            margin-top: 30px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            header {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            button {
+                width: 90%;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+  Você está cancelando sua lavagem
+</header>
+
+<h1 id="textoTitulo">Você cancelou sua lavagem</h1>
+<h2>Se quiser agendar de novo, clique em "Voltar". Se não quiser, aperte "Cancelar".</h2>
+
+<p><img id="carroImg" src="Imagem.webp" alt="Carro"></p>
+
+<!-- Botões -->
+<button type="button" onclick="window.location.href='index.html';">Cancelar</button>
+<button type="button" onclick="window.location.href='agendamento.html';">Voltar</button>
+
+</body>
+</html>

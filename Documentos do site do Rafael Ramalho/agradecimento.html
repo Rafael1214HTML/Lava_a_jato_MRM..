@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- Responsividade para celular -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MRM - Obrigado por Agendar</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background-color: #0288d1;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        img {
+            width: 600px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 70%;
+        }
+
+        .info-box h2 {
+            font-size: 20px;
+            color: #0288d1;
+        }
+
+        .info-box p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .info-box span {
+            font-weight: bold;
+            color: #0288d1;
+        }
+
+        button {
+            background-color: #0288d1;
+            color: white;
+            font-size: 18px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0277bd;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Responsividade */
+        @media (max-width: 700px) {
+            main {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            img {
+                width: 90%;
+            }
+
+            .info-box {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .info-box p {
+                font-size: 16px;
+            }
+
+            button {
+                width: 100%;
+                padding: 14px;
+                font-size: 18px;
+            }
+
+            header {
+                font-size: 20px;
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        MRM - AGRADECIMENTO
+    </header>
+
+    <main>
+        <h1>Obrigado por nos agendar!</h1>
+        <h2>Agora é só entregar seu carro, e nós cuidaremos de tudo com segurança e qualidade!</h2>
+        <img id="carroImg" src="agradecimento do agendamento da lavagem.webp" alt="Carro Limpo">
+
+        <div class="info-box">
+            <h2>Informações importantes:</h2>
+            <p>Em caso de dúvidas, entre em contato pelo número:</p>
+            <p><span>(19) 97125-9678</span></p>
+            <p>Não se esqueça de conferir nossas promoções semanais. Aproveite!</p>
+        </div>
+
+        <button type="button" onclick="window.location.href='index.html';">Voltar para a página inicial</button>
+    </main>
+
+    <script>
+        // Ajusta altura da imagem (boa prática)
+        function ajustarImagem() {
+            const img = document.getElementById('carroImg');
+            img.style.height = 'auto';
+        }
+
+        window.onload = ajustarImagem;
+    </script>
+</body>
+</html>

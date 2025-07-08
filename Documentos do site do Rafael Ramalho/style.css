@@ -1,0 +1,429 @@
+body {
+    background-color: #f9f9f9; /* Fundo suave e clean */
+    font-family: 'Arial', sans-serif; /* Fonte moderna */
+    text-align: center; /* Centraliza o conteúdo */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #0288d1; /* Cor azul */
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+}
+
+h1 {
+    color: #333; /* Cor mais sóbria para o título */
+    font-size: 36px;
+    margin-top: 30px;
+}
+
+h2 {
+    color: #555; /* Cor mais suave para o subtítulo */
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+p {
+    font-size: 18px;
+    color: #444; /* Cor mais suave para o texto */
+}
+
+#carroImg {
+    width: 70%; /* Ajusta a largura para 70% */
+    max-width: 500px; /* Largura máxima */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-top: 20px;
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease-in-out;
+}
+
+#carroImg:hover {
+    transform: scale(1.05); /* Efeito de zoom suave ao passar o mouse */
+}
+
+.legenda {
+    font-size: 20px; /* Aumenta o tamanho da legenda */
+    color: #0288d1; /* Define a cor azul */
+    margin-top: 20px;
+    line-height: 1.8; /* Aumenta o espaçamento entre linhas */
+    text-decoration: underline; /* Adiciona sublinhado */
+    font-weight: bold; /* Adiciona destaque ao texto */
+}
+
+#textoAlterado {
+    font-size: 16px; /* Define um tamanho menor que a legenda */
+    color: #000; /* Cor preta */
+    margin-top: 10px;
+}
+
+button {
+    background-color: #0288d1; /* Cor azul */
+    color: white;
+    font-size: 16px; /* Tamanho da fonte reduzido */
+    padding: 10px 20px; /* Menor espaçamento interno */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0277bd; /* Cor azul escuro ao passar o mouse */
+}
+
+footer {
+    margin-top: 50px;
+    font-size: 14px;
+    color: #777;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+
+    #carroImg {
+        width: 90%;
+    }
+
+    #textoAlterado {
+        font-size: 14px; /* Reduz ainda mais em telas menores */
+    }
+}
+
+body {
+    background: linear-gradient(to bottom right, #e0f7fa, #b3e5fc); /* Fundo com degradê moderno */
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.8;
+}
+
+button {
+    background-color: #0288d1; /* Cor azul */
+    color: white;
+    font-size: 16px; /* Tamanho da fonte reduzido */
+    padding: 10px 20px; /* Menor espaçamento interno */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0277bd; /* Cor azul escuro ao passar o mouse */
+}
+
+header {
+    background-color: #0288d1; /* Azul vibrante */
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 28px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #0288d1; /* Azul para o título */
+    text-align: center;
+    font-size: 36px;
+    margin-top: 30px;
+}
+
+ul {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 15px;
+    text-align: left;
+    font-size: 18px;
+    color: #555;
+    list-style: none;
+}
+
+ul li {
+    background-color: #ffffff; /* Fundo branco */
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar os itens */
+}
+
+ul li strong {
+    color: #0288d1; /* Destaque em azul */
+}
+
+footer {
+    background-color: #0288d1;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    margin-top: 30px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Centralizando o botão */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+body {
+    background: linear-gradient(to bottom, #f7f7f7, #e0e0e0);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #0288d1; /* Cor azul */
+    color: white;
+    padding: 20px 0;
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+    margin-top: 30px;
+}
+
+h2 {
+    font-size: 22px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Contêiner do formulário */
+.form-container {
+    background-color: #fff;
+    padding: 30px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-row label {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.form-row select, .form-row input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.form-row select:focus, .form-row input:focus {
+    border-color: #0288d1; /* Cor azul */
+    outline: none;
+}
+
+#valorComDesconto {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #0288d1; /* Cor azul */
+}
+
+button {
+    background-color: #0288d1; /* Cor azul */
+    color: white;
+    font-size: 16px; /* Tamanho da fonte reduzido */
+    padding: 10px 20px; /* Menor espaçamento interno */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0277bd; /* Azul escuro ao passar o mouse */
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#cancelarBtn {
+    background-color: #f44336; /* Cor vermelha para cancelar */
+}
+
+#cancelarBtn:hover {
+    background-color: #e53935; /* Vermelho escuro ao passar o mouse */
+}
+
+#emailErro {
+    color: #d32f2f;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+}
+
+body {
+    background-color: #f9f9f9; /* Fundo suave e clean */
+    font-family: 'Arial', sans-serif; /* Fonte moderna */
+    text-align: center; /* Centraliza o conteúdo */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #0288d1; /* Cor azul */
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+}
+
+main {
+    padding: 40px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 22px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+img {
+    width: 600px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.info-box {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 70%;
+}
+
+.info-box h2 {
+    font-size: 20px;
+    color: #0288d1; /* Cor azul */
+}
+
+.info-box p {
+    font-size: 16px;
+    color: #333;
+}
+body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #0288d1;
+            color: white;
+            padding: 20px 0;
+            font-size: 28px;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #0288d1;
+        }
+
+        .confirmacao-container {
+            background-color: #fff;
+            padding: 30px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .confirmacao-row {
+            margin-bottom: 20px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .confirmacao-row span {
+            font-weight: bold;
+        }
+
+        .botao {
+            background-color: #0288d1;
+            color: white;
+            font-size: 16px; /* Tamanho da fonte reduzido */
+            padding: 10px 20px; /* Menor espaçamento interno */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .botao:hover {
+            background-color: #0277bd;
+        }

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- ESSENCIAL para responsividade -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MRM - Informações</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS interno para responsividade (funciona mesmo sem style.css) -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            padding: 20px;
+            margin: 0;
+        }
+
+        header {
+            background-color: #004aad;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        ul {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            header {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            button {
+                width: 90%;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Lava a Jato MRM - Qualidade em Cada Detalhe
+</header>
+
+<h1>Informações sobre o Lava a Jato MRM</h1>
+
+<ul>
+    <li><strong>Sobre Nós:</strong> O Lava a Jato MRM é um negócio familiar, focado em oferecer serviços automotivos de alta qualidade com responsabilidade e compromisso.</li>
+    <li><strong>Equipe Capacitada:</strong> Nossa equipe é apaixonada por veículos e dedicada à sua satisfação.</li>
+    <li><strong>Sustentabilidade:</strong> Usamos os melhores produtos.</li>
+    <li><strong>Horário de Funcionamento:</strong> Segunda a Sábado, das 14h às 18h.</li>
+    <li><strong>Contato:</strong> 
+        <ul>
+            <li>Telefone: (19) 97125-9678</li>
+            <li>Email: lava.a.jato.mrm@gmail.com</li>
+        </ul>
+    </li>
+</ul>
+
+<div class="button-container">
+    <button type="button" onclick="window.location.href='index.html';">Voltar</button>
+    <button type="button" onclick="window.location.href='agendamento.html';">Começar a agendar sua lavagem</button>
+</div>
+
+</body>
+</html>
