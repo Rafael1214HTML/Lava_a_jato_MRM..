@@ -212,6 +212,7 @@
 
         localStorage.setItem("formData", JSON.stringify(formData));
 
+        emailjs.send('service_m0u8meb', 'template_8hswb3s', formData)
         emailjs.send('service_bsc7bjb', 'template_c6y0rid', formData)
             .then(function(response) {
                 alert("Sua lavagem foi agendada com sucesso!");
