@@ -104,7 +104,7 @@
     <form id="formulario">
         <div class="form-row">
             <label for="formas-lavagem">Formas de lavagem:</label>
-            <select id="formas-lavagem" name="formas-lavagem" onchange="calcularTotal(); validarFormulario()">
+            <select id="formas-lavagem" name="lavagem" onchange="calcularTotal(); validarFormulario()">
                 <option value="0">Selecione</option>
                 <option value="Lavagem de dentro do carro: R$ 20,00">Lavagem de dentro do carro: R$ 20,00</option>
                 <option value="Lavagem de fora do carro: R$ 20,00">Lavagem de fora do carro: R$ 20,00</option>
@@ -115,7 +115,7 @@
 
         <div class="form-row">
             <label for="adicionais-lavagem">Adicionais na lavagem:</label>
-            <select id="adicionais-lavagem" name="adicionais-lavagem" onchange="calcularTotal(); validarFormulario()">
+            <select id="adicionais-lavagem" name="adicionais" onchange="calcularTotal(); validarFormulario()">
                 <option value="0">Selecione</option>
                 <option value="Nenhum produto R$ 0,00">Nenhum produto R$ 0,00</option>
                 <option value="Produto no banco: R$ 9,00">Produto no banco: R$ 9,00</option>
@@ -129,7 +129,7 @@
 
         <div class="form-row">
             <label for="formas-pagamento">Forma de pagamento:</label>
-            <select id="formas-pagamento" name="formas-pagamento" onchange="validarFormulario()">
+            <select id="formas-pagamento" name="pagamento" onchange="validarFormulario()">
                 <option value="">Selecione</option>
                 <option value="Pix">Pix</option>
                 <option value="Dinheiro">Dinheiro</option>
@@ -201,24 +201,30 @@
         var valorComDesconto = total - desconto;
 
         var formData = {
-            "formas-lavagem": document.getElementById("formas-lavagem").value,
-            "adicionais-lavagem": document.getElementById("adicionais-lavagem").value,
-            "formas-pagamento": document.getElementById("formas-pagamento").value,
-            "email": document.getElementById("email").value,
-            "telefone": document.getElementById("telefone").value,
-            "valorComDesconto": valorComDesconto.toFixed(2),
-            "desconto": desconto.toFixed(2)
+            lavagem: document.getElementById("formas-lavagem").value,
+            adicionais: document.getElementById("adicionais-lavagem").value,
+            pagamento: document.getElementById("formas-pagamento").value,
+            email: document.getElementById("email").value,
+            telefone: document.getElementById("telefone").value,
+            valor_com_desconto: valorComDesconto.toFixed(2),
+            desconto: desconto.toFixed(2)
         };
 
         localStorage.setItem("formData", JSON.stringify(formData));
 
+        // Enviar para o dono do site
         emailjs.send('service_m0u8meb', 'template_8hswb3s', formData)
+            .then(function(response) {
+                console.log("Email enviado para o dono do site");
+            });
+
+        // Enviar para o cliente
         emailjs.send('service_bsc7bjb', 'template_c6y0rid', formData)
             .then(function(response) {
                 alert("Sua lavagem foi agendada com sucesso!");
                 window.location.href = "confirmacão_do_pedido.html";
             }, function(error) {
-                alert("Erro ao agendar a lavagem " + error.text);
+                alert("Erro ao agendar a lavagem: " + error.text);
             });
     }
 
