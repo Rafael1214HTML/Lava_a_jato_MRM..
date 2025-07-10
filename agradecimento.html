@@ -2,13 +2,11 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <!-- Responsividade para celular -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Lava a jato MRM - Obrigado por Agendar</title>
     <style>
+        /* Configuração geral da página */
         body {
-            background-color: #f9f9f9;
+            background-color: #f2f2f2;
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
@@ -17,56 +15,58 @@
         }
 
         header {
-            background-color: #0288d1;
+            background-color: #0288d1; /* Cor azul */
             color: white;
-            padding: 20px;
-            font-size: 24px;
+            padding: 30px;
+            font-size: 28px;
+            border-bottom: 5px solid #0277bd;
         }
 
         main {
-            padding: 40px 20px;
-            max-width: 900px;
-            margin: 0 auto;
+            padding: 40px;
         }
 
         h1 {
-            font-size: 36px;
-            color: #333;
+            font-size: 38px;
+            color: #0288d1;
             margin-bottom: 20px;
+            font-weight: bold;
         }
 
         h2 {
             font-size: 22px;
             color: #555;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         img {
-            max-width: 100%;
+            width: 600px;
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
         }
 
         .info-box {
             background-color: #fff;
-            padding: 20px;
+            padding: 25px;
             margin: 20px auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-            width: 70%;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
         }
 
         .info-box h2 {
-            font-size: 20px;
-            color: #0288d1;
+            font-size: 24px;
+            color: #0288d1; /* Cor azul */
+            margin-bottom: 15px;
         }
 
         .info-box p {
             font-size: 18px;
             color: #555;
+            margin-bottom: 15px;
         }
 
         .info-box span {
@@ -74,66 +74,76 @@
             color: #0288d1;
         }
 
+        .smile-message {
+            font-size: 26px;
+            color: #0288d1;
+            font-weight: bold;
+            margin-top: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            margin-top: 40px;
+        }
+
         button {
             background-color: #0288d1;
             color: white;
-            font-size: 18px;
-            padding: 12px 24px;
+            font-size: 20px;
+            padding: 15px 30px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            max-width: 300px;
-            width: 100%;
         }
 
         button:hover {
             background-color: #0277bd;
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         footer {
-            margin-top: 30px;
+            margin-top: 50px;
             font-size: 14px;
             color: #777;
         }
 
-        /* Responsividade */
-        @media (max-width: 700px) {
-            main {
-                padding: 20px 10px;
-            }
+        .animated-heart {
+            font-size: 36px;
+            color: #ff4081;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
 
-            h1 {
-                font-size: 28px;
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
             }
-
-            h2 {
-                font-size: 18px;
+            50% {
+                transform: scale(1.2);
             }
-
-            .info-box {
-                width: 90%;
-                padding: 15px;
-            }
-
-            .info-box p {
-                font-size: 16px;
-            }
-
-            button {
-                padding: 14px;
-                font-size: 18px;
-                max-width: none;
-            }
-
-            header {
-                font-size: 20px;
-                padding: 16px;
+            100% {
+                transform: scale(1);
             }
         }
+
+        .testimonial {
+            margin-top: 30px;
+            background-color: #0288d1;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        .testimonial p {
+            font-style: italic;
+        }
+
     </style>
 </head>
 <body>
@@ -143,25 +153,42 @@
     </header>
 
     <main>
-        <h1>Obrigado por nos agendar!</h1>
+        <h1>Obrigado por agendar conosco!</h1>
         <h2>Agora é só entregar seu carro, e nós cuidaremos de tudo com segurança e qualidade!</h2>
-        <img id="carroImg" src="agradecimento do agendamento da lavagem.webp" alt="Carro Limpo">
+        <img id="carroImg" src="carinha_de_sorriso.png" alt="Carro Limpo">
 
         <div class="info-box">
             <h2>Informações importantes:</h2>
             <p>Em caso de dúvidas, entre em contato pelo número:</p>
             <p><span>(19) 97125-9678</span></p>
-            <p>Não se esqueça de conferir nossas promoções semanais. Aproveite!</p>
+            <p>Não se esqueça de conferir nossas promoções semanais! Aproveite!</p>
         </div>
 
-        <button type="button" onclick="window.location.href='index.html';">Voltar para a página inicial</button>
+        <div class="smile-message">
+            <p>Estamos muito felizes em ter você como cliente!</p>
+            <p>Seu agendamento foi recebido com sucesso!</p>
+            <span class="animated-heart">❤️</span>
+        </div>
+
+        <div class="button-container">
+            <button type="button" onclick="window.location.href='index.html';">Voltar para a página inicial</button>
+        </div>
+
+        <div class="testimonial">
+            <p>"Excelente serviço! Fiquei muito satisfeito com a qualidade da lavagem e o atendimento. Recomendo!"</p>
+            <p>- João Silva</p>
+        </div>
+
+        <footer>
+            &copy; 2024 MRM - Todos os direitos reservados.
+        </footer>
     </main>
 
     <script>
-        // Ajusta altura da imagem (boa prática)
+        // Função para ajustar a altura da imagem dinamicamente
         function ajustarImagem() {
             const img = document.getElementById('carroImg');
-            img.style.height = 'auto';
+            img.style.height = 'auto'; // Ajusta automaticamente com base na largura
         }
 
         window.onload = ajustarImagem;

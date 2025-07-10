@@ -4,32 +4,34 @@
     <meta charset="UTF-8">
     <title>Lava a jato MRM - Início</title>
 
-    <!-- TAG ESSENCIAL para responsividade -->
+    <!-- Responsividade -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Se tiver style.css, ele ainda funciona -->
+    <!-- CSS externo (caso exista) -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- CSS interno como apoio ou se style.css não existir -->
+    <!-- CSS interno -->
     <style>
-        /* Estilos base */
         body {
             font-family: Arial, sans-serif;
             font-size: 18px;
             padding: 20px;
             text-align: center;
+            background-color: #e6f0ff;
+            margin: 0;
         }
 
         header {
             background-color: #004aad;
             color: white;
-            padding: 15px;
+            padding: 20px;
             font-size: 24px;
         }
 
         img {
-            max-width: 100%;
+            max-width: 500px; /* imagem ficará no máximo com 300px de largura */
             height: auto;
+            margin-top: 20px;
         }
 
         button {
@@ -47,8 +49,7 @@
             background-color: #0056b3;
         }
 
-        /* Responsivo para celulares */
-        @media (max-width: 768px) 
+        @media (max-width: 768px) {
             body {
                 font-size: 16px;
                 padding: 10px;
@@ -63,22 +64,25 @@
                 width: 90%;
                 font-size: 18px;
             }
+
+            img {
+                max-width: 80%;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<header>
-  Bem-vindo ao lava a jato MRM
+    <header>
+        Bem-vindo ao lava a jato MRM
+    </header>
 
-    <!-- Parte do texto de boas-vindas -->
     <h1 id="textoTitulo">Seja bem-vindo ao Lava a Jato MRM</h1>
     <h2>Deixe seu carro brilhando com a nossa lavagem de qualidade, a preços acessíveis!</h2>
 
-    <p><img id="carroImg" src="Logo_do_lava_a_jato.webp" alt="Carro"></p>
+    <p><img id="carroImg" src="Logo_do_lava_a_jato.webp" alt="Logo do Lava a Jato"></p>
 
-    <!-- Botões -->
     <button type="button" onclick="window.location.href='agendamento.html';">Começar a agendar sua lavagem</button>
     <button type="button" onclick="window.location.href='informacão.html';">Mais informações!</button>
 
